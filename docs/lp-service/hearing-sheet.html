@@ -1,0 +1,725 @@
+<title>LP制作ヒアリングシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #FBFAF7;
+    --ground-sunk: #F3F1EA;
+    --panel:       #FFFFFF;
+    --field:       #FFFFFF;
+    --ink:         #1C2624;
+    --ink-soft:    #5C6966;
+    --ink-faint:   #8A9491;
+    --rule:        #DFDBD1;
+    --rule-soft:   #EBE7DE;
+    --accent:      #0F6B5C;
+    --accent-deep: #0A4C41;
+    --accent-tint: #E6F0EC;
+    --on-accent:   #FFFFFF;
+    --shadow:      0 1px 2px rgba(28,38,36,.05), 0 12px 30px -20px rgba(28,38,36,.4);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #131817;
+      --ground-sunk: #0E1312;
+      --panel:       #1A211F;
+      --field:       #101614;
+      --ink:         #E9E6DD;
+      --ink-soft:    #9DA9A5;
+      --ink-faint:   #74807D;
+      --rule:        #2B3634;
+      --rule-soft:   #222B29;
+      --accent:      #63BCA6;
+      --accent-deep: #8ED4C1;
+      --accent-tint: #1B2A27;
+      --on-accent:   #0E1312;
+      --shadow:      0 1px 2px rgba(0,0,0,.4), 0 12px 30px -20px rgba(0,0,0,.9);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #131817;
+    --ground-sunk: #0E1312;
+    --panel:       #1A211F;
+    --field:       #101614;
+    --ink:         #E9E6DD;
+    --ink-soft:    #9DA9A5;
+    --ink-faint:   #74807D;
+    --rule:        #2B3634;
+    --rule-soft:   #222B29;
+    --accent:      #63BCA6;
+    --accent-deep: #8ED4C1;
+    --accent-tint: #1B2A27;
+    --on-accent:   #0E1312;
+    --shadow:      0 1px 2px rgba(0,0,0,.4), 0 12px 30px -20px rgba(0,0,0,.9);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 96px;
+  }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { padding: 64px 0 34px; display: flex; flex-direction: column; gap: 20px; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  h1 {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-weight: 700; font-size: clamp(1.75rem, 5.2vw, 2.4rem);
+    line-height: 1.42; margin: 0; text-wrap: balance;
+  }
+
+  .lede { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+  .reassure {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-tint);
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 14.5px; line-height: 1.85;
+  }
+  .reassure p { margin: 0; }
+  .reassure strong { font-weight: 700; }
+
+  /* ---------- progress ---------- */
+
+  .progress-dock {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--ground);
+    border-bottom: 1px solid var(--rule);
+    margin: 0 -22px 0;
+    padding: 12px 22px 11px;
+  }
+  .progress-row {
+    max-width: 720px; margin: 0 auto;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .progress-track {
+    flex: 1; height: 3px; background: var(--rule-soft);
+    overflow: hidden; border-radius: 999px;
+  }
+  .progress-fill {
+    height: 100%; width: 0%; background: var(--accent);
+    transition: width .3s ease;
+  }
+  .progress-label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11.5px; color: var(--ink-soft); white-space: nowrap;
+  }
+  .save-flag {
+    font-size: 10.5px; color: var(--ink-faint);
+    white-space: nowrap; opacity: 0; transition: opacity .3s;
+  }
+  .save-flag.on { opacity: 1; }
+
+  /* ---------- sections ---------- */
+
+  section.block { padding-top: 52px; }
+
+  .block-head {
+    display: flex; align-items: baseline; gap: 12px;
+    padding-bottom: 14px; margin-bottom: 26px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .block-letter {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px; font-weight: 600; letter-spacing: .16em; color: var(--accent);
+  }
+  .block-head h2 {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-size: 1.28rem; font-weight: 700; margin: 0; line-height: 1.5;
+  }
+
+  /* ---------- question ---------- */
+
+  .q { margin-bottom: 30px; }
+
+  .q-label {
+    display: flex; align-items: baseline; gap: 9px;
+    font-weight: 700; font-size: 15.5px; line-height: 1.65;
+    margin-bottom: 4px;
+  }
+  .q-num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11.5px; font-weight: 600; color: var(--ink-faint);
+    flex-shrink: 0; padding-top: .18em;
+  }
+  .req {
+    font-size: 10px; font-weight: 600; letter-spacing: .06em;
+    color: var(--on-accent); background: var(--accent);
+    padding: 2px 7px; border-radius: 2px; flex-shrink: 0;
+    align-self: center; white-space: nowrap;
+  }
+  .q-help {
+    margin: 0 0 9px 0; padding-left: 30px;
+    font-size: 13.2px; line-height: 1.75; color: var(--ink-soft);
+  }
+  .q-body { padding-left: 30px; }
+  @media (max-width: 560px) {
+    .q-help, .q-body { padding-left: 0; }
+  }
+
+  textarea, input[type="text"], input[type="date"] {
+    width: 100%; font-family: inherit; font-size: 15px; line-height: 1.8;
+    color: var(--ink); background: var(--field);
+    border: 1px solid var(--rule); border-radius: 4px;
+    padding: 11px 13px; resize: none; overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea { min-height: 5.4em; }
+  textarea:focus, input[type="text"]:focus, input[type="date"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-tint);
+    outline: none;
+  }
+  textarea::placeholder, input::placeholder { color: var(--ink-faint); }
+
+  /* choice controls */
+
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choices label {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--rule); border-radius: 999px;
+    background: var(--field);
+    padding: 7px 15px 7px 12px;
+    font-size: 13.8px; cursor: pointer;
+    transition: border-color .15s, background .15s, color .15s;
+  }
+  .choices label:hover { border-color: var(--accent); }
+  .choices input { accent-color: var(--accent); margin: 0; width: 15px; height: 15px; flex-shrink: 0; }
+  .choices label:has(input:checked) {
+    border-color: var(--accent); background: var(--accent-tint);
+    color: var(--accent-deep); font-weight: 500;
+  }
+  .choices label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+
+  .sub-label {
+    font-size: 12.5px; font-weight: 500; color: var(--ink-soft);
+    margin-bottom: 5px; display: block;
+  }
+
+  .id-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 620px) { .id-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* ---------- promise ---------- */
+
+  .promise {
+    margin-top: 56px; border: 1px solid var(--rule);
+    background: var(--panel); padding: 28px 26px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .promise h3 {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-size: 1.06rem; font-weight: 700; margin: 0; line-height: 1.6;
+  }
+  .promise ol {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-direction: column; gap: 9px;
+    font-size: 14.2px; counter-reset: pr;
+  }
+  .promise li {
+    counter-increment: pr;
+    display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: baseline;
+  }
+  .promise li::before {
+    content: counter(pr);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; font-weight: 600; color: var(--accent);
+  }
+  .promise p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- action dock ---------- */
+
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    background: var(--panel);
+    border-top: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+    padding: 12px 22px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .dock-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; gap: 10px; align-items: center;
+  }
+  button {
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    border-radius: 4px; cursor: pointer; white-space: nowrap;
+    padding: 11px 18px; transition: background .15s, border-color .15s, color .15s;
+  }
+  .btn-primary {
+    flex: 1; background: var(--accent); color: var(--on-accent);
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn-ghost {
+    background: transparent; color: var(--ink-soft);
+    border: 1px solid var(--rule);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 560px) {
+    .btn-ghost { padding: 11px 13px; }
+  }
+
+  footer {
+    margin-top: 44px; padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+  footer p { margin: 0 0 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  /* ---------- print ---------- */
+
+  @media print {
+    body { padding-bottom: 0; background: #fff; color: #000; font-size: 11pt; }
+    .dock, .progress-dock, .reassure { display: none !important; }
+    .wrap { max-width: none; padding: 0; }
+    section.block { padding-top: 22pt; break-inside: avoid; }
+    .q { break-inside: avoid; margin-bottom: 14pt; }
+    textarea, input[type="text"], input[type="date"] {
+      border: 1px solid #999; background: #fff; color: #000;
+      box-shadow: none; font-size: 10.5pt;
+    }
+    .choices label { border: 1px solid #999; background: #fff; color: #000; }
+    .promise { break-inside: avoid; border: 1px solid #999; }
+    .masthead { padding: 0 0 14pt; }
+  }
+</style>
+
+<div class="progress-dock">
+  <div class="progress-row">
+    <span class="progress-label" id="progLabel">記入済み 0 / 14</span>
+    <span class="progress-track"><span class="progress-fill" id="progFill"></span></span>
+    <span class="save-flag" id="saveFlag">保存しました</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">事前ヒアリングシート</div>
+    <h1>あなたの商品のことを、<br>先に教えてください。</h1>
+    <p class="lede">ミーティングの前にこのシートを埋めておいていただくと、当日を「説明の時間」ではなく「決める時間」に使えます。ここが埋まっているほど、出来上がるページの精度が上がります。</p>
+
+    <div class="reassure">
+      <p><strong>うまい文章にしようとしなくて大丈夫です。</strong>思いついたままの言葉で構いません。言い回しは、こちらで整えます。</p>
+      <p><strong>空欄があっても大丈夫です。</strong><span class="req" style="display:inline-block;vertical-align:middle;">事前</span> のついた5問だけ埋めておいていただければ、残りは当日一緒に考えられます。</p>
+      <p><strong>入力内容はこの端末に自動保存されます。</strong>途中で閉じても、同じ端末で開き直せば続きから書けます。書き終えたら、いちばん下のボタンで回答をコピーしてお送りください。</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-letter">00</span>
+      <h2>はじめに</h2>
+    </div>
+    <div class="id-grid">
+      <div>
+        <span class="sub-label">お名前</span>
+        <input type="text" data-f="お名前" placeholder="山田 花子">
+      </div>
+      <div>
+        <span class="sub-label">事業・お店の名前</span>
+        <input type="text" data-f="事業・お店の名前" placeholder="まだ決まっていなければ空欄で大丈夫です">
+      </div>
+      <div>
+        <span class="sub-label">ご連絡先（LINEのお名前など）</span>
+        <input type="text" data-f="ご連絡先" placeholder="やりとりに使っているお名前">
+      </div>
+      <div>
+        <span class="sub-label">記入日</span>
+        <input type="date" data-f="記入日">
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-letter">A</span>
+      <h2>商品・サービスについて</h2>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">01</span><span>何を届けますか？</span><span class="req">事前</span></div>
+      <p class="q-help">商品・サービスの名前と、ひとことでいうと何か。</p>
+      <div class="q-body"><textarea data-q="01" data-f="何を届けますか？" placeholder="例）はじめての人向けの、オンラインパン教室"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">02</span><span>誰に届けたいですか？</span><span class="req">事前</span></div>
+      <p class="q-help">「みんなに」と書くと、誰にも届かないページになります。<strong>過去のあなたと同じ場所にいる人</strong>を、ひとり思い浮かべて書いてみてください。</p>
+      <div class="q-body"><textarea data-q="02" data-f="誰に届けたいですか？" placeholder="例）小さな子どもがいて外に習いに行けない、30代のお母さん"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">03</span><span>その人のいちばんの悩みは？</span><span class="req">事前</span></div>
+      <p class="q-help">その人が、夜に検索してしまうようなこと。</p>
+      <div class="q-body"><textarea data-q="03" data-f="その人のいちばんの悩みは？" placeholder="例）市販のパンは添加物が気になるけれど、自分で焼くのは難しそうで手が出ない"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">04</span><span>使うと、どう変わりますか？</span><span class="req">事前</span></div>
+      <p class="q-help">機能ではなく、その人の生活がどうなるか。</p>
+      <div class="q-body"><textarea data-q="04" data-f="使うと、どう変わりますか？" placeholder="例）週末の朝、焼きたてを家族に出せるようになる"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">05</span><span>中身・内容は？</span></div>
+      <p class="q-help">含まれるもの、回数、時間、特典など。箇条書きで大丈夫です。</p>
+      <div class="q-body"><textarea data-q="05" data-f="中身・内容は？" placeholder="例）・全4回のオンライン講座（各90分）&#10;・レシピPDF 12種&#10;・質問し放題のグループチャット"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">06</span><span>安心材料はありますか？</span></div>
+      <p class="q-help">実績、資格、お客さまの声、返金の決まりなど。<strong>「なし」でもまったく問題ありません。</strong>正直に「なし」と書けることも強さです。ないものは、ページにも書きません。</p>
+      <div class="q-body"><textarea data-q="06" data-f="安心材料はありますか？" placeholder="例）これまで40名の方に受けていただきました／まだ実績はありません"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">07</span><span>ゴールと価格は？</span><span class="req">事前</span></div>
+      <p class="q-help">いくらの、何を、買っていただきたいか。検討中の場合は「検討中」で大丈夫です。</p>
+      <div class="q-body"><textarea data-q="07" data-f="ゴールと価格は？" placeholder="例）全4回の講座を 29,800円で申し込んでもらう"></textarea></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-letter">B</span>
+      <h2>お客さまの流れ</h2>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">08</span><span>読む人は、どこから来ますか？</span></div>
+      <p class="q-help">来た場所によって、ページの最初に書くべきことが変わります。あてはまるものすべて。</p>
+      <div class="q-body">
+        <div class="choices" data-group="08" data-f="読む人はどこから来ますか？">
+          <label><input type="checkbox" value="Threads">Threads</label>
+          <label><input type="checkbox" value="Instagram">Instagram</label>
+          <label><input type="checkbox" value="X">X</label>
+          <label><input type="checkbox" value="公式LINE">公式LINE</label>
+          <label><input type="checkbox" value="オープンチャット">オープンチャット</label>
+          <label><input type="checkbox" value="note・Brain">note・Brain</label>
+          <label><input type="checkbox" value="検索">検索</label>
+          <label><input type="checkbox" value="ご紹介">ご紹介</label>
+          <label><input type="checkbox" value="既存のお客さま">既存のお客さま</label>
+          <label><input type="checkbox" value="まだ決まっていない">まだ決まっていない</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">09</span><span>ページで、最終的にしてほしい行動は？</span><span class="req">事前</span></div>
+      <p class="q-help"><strong>ひとつだけ</strong>選んでください。ボタンが複数あるページは、読む人を迷わせて、結局どれも押されません。</p>
+      <div class="q-body">
+        <div class="choices" data-group="09" data-f="してほしい行動">
+          <label><input type="radio" name="goal" value="商品を購入する">商品を購入する</label>
+          <label><input type="radio" name="goal" value="講座に申し込む">講座に申し込む</label>
+          <label><input type="radio" name="goal" value="公式LINEに登録する">公式LINEに登録する</label>
+          <label><input type="radio" name="goal" value="無料相談を申し込む">無料相談を申し込む</label>
+          <label><input type="radio" name="goal" value="予約する">予約する</label>
+          <label><input type="radio" name="goal" value="問い合わせる">問い合わせる</label>
+          <label><input type="radio" name="goal" value="資料請求する">資料請求する</label>
+          <label><input type="radio" name="goal" value="まだ迷っている">まだ迷っている</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">10</span><span>そのあとの流れは？</span></div>
+      <p class="q-help">ページを見たあと、お客さまがどう進んで、最後に何を買うのか。矢印でつないで書いてみてください。</p>
+      <div class="q-body"><textarea data-q="10" data-f="そのあとの流れ" placeholder="例）Threads → このページ → LINE登録 → 無料体験 → 講座に申し込み"></textarea></div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">11</span><span>1枚のページで足りそうですか？</span></div>
+      <p class="q-help">商品がいくつもある、実績やプロフィールも見せたい、という場合は複数ページ型が向いていることがあります。迷っていれば「相談したい」で大丈夫です。</p>
+      <div class="q-body">
+        <div class="choices" data-group="11" data-f="ページの形">
+          <label><input type="radio" name="pagetype" value="1枚のページでよさそう">1枚のページでよさそう</label>
+          <label><input type="radio" name="pagetype" value="複数ページのサイト型がよさそう">複数ページのサイト型がよさそう</label>
+          <label><input type="radio" name="pagetype" value="相談したい">相談したい</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-letter">C</span>
+      <h2>雰囲気・世界観</h2>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">12</span><span>「いいな」と思うページを3つ</span></div>
+      <p class="q-help">ここがいちばん大事です。「高級感のある感じ」は人によって思い浮かべるものが違うので、実物を見せていただくのがいちばん早く伝わります。<strong>業種はまったく違っていて構いません。</strong>カフェ、ホテル、コスメ、なんでもどうぞ。スクリーンショットがあれば、それも一緒にお送りください。</p>
+      <div class="q-body stack">
+        <input type="text" data-q="12" data-f="参考ページ 1" placeholder="URL、またはお店・ブランドの名前">
+        <input type="text" data-q="12b" data-f="参考ページ 2" placeholder="URL、またはお店・ブランドの名前">
+        <input type="text" data-q="12c" data-f="参考ページ 3" placeholder="URL、またはお店・ブランドの名前">
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">13</span><span>欲しい雰囲気／避けたい雰囲気</span></div>
+      <p class="q-help">「高級感は欲しいけれど、冷たくはしたくない」「女性向けだけど、甘すぎるのは避けたい」——こういう感覚こそ、とても大事な材料になります。</p>
+      <div class="q-body stack">
+        <div>
+          <span class="sub-label">欲しい雰囲気</span>
+          <textarea data-q="13" data-f="欲しい雰囲気" placeholder="例）やさしくて、あたたかい感じ。手づくり感も少し欲しい"></textarea>
+        </div>
+        <div>
+          <span class="sub-label">避けたい雰囲気</span>
+          <textarea data-q="13b" data-f="避けたい雰囲気" placeholder="例）かっちりしすぎ、企業っぽいのは避けたい"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">14</span><span>これは使わないでほしい、というもの</span></div>
+      <p class="q-help">色、言葉、表現など。特になければ空欄で大丈夫です。</p>
+      <div class="q-body"><textarea data-q="14" data-f="使わないでほしいもの" placeholder="例）赤は使わないでほしい／「今すぐ」のような急かす言葉は入れたくない"></textarea></div>
+    </div>
+  </section>
+
+  <div class="promise">
+    <h3>仕上げるとき、私たちが必ず確認する5つ</h3>
+    <p>ご記入いただいた内容は、最終的にこの5つの基準で形にしていきます。</p>
+    <ol>
+      <li>主役がひとつに絞られているか</li>
+      <li>誰に向けたページか、3秒で伝わるか</li>
+      <li>次に何をすればいいか、迷わせていないか</li>
+      <li>不安を先回りして消せているか</li>
+      <li>煽っていないか</li>
+    </ol>
+    <p>とくに5つめについて。「今だけ」「これを逃すと損」といった急かす言葉は、短期の反応と引き換えに信頼を削ります。ご希望がない限り、こちらから入れることはありません。</p>
+  </div>
+
+  <footer>
+    <p>ご記入ありがとうございます。書き終えたら、下の「回答をコピー」を押して、そのままお送りください。</p>
+    <p>入力内容はお使いの端末の中だけに保存され、送信ボタンを押すまでどこにも送られません。</p>
+  </footer>
+</div>
+
+<div class="dock">
+  <div class="dock-inner">
+    <button type="button" class="btn-primary" id="copyBtn">回答をコピー</button>
+    <button type="button" class="btn-ghost" id="saveBtn">保存</button>
+    <button type="button" class="btn-ghost" id="printBtn">印刷</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'lp-hearing-sheet-v1';
+  var fields = Array.prototype.slice.call(document.querySelectorAll('[data-f]'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('[data-group]'));
+  var flag = document.getElementById('saveFlag');
+  var progFill = document.getElementById('progFill');
+  var progLabel = document.getElementById('progLabel');
+  var flagTimer, saveTimer;
+
+  /* ---- textarea auto-grow (keeps print output complete) ---- */
+  function grow(el) {
+    if (el.tagName !== 'TEXTAREA') return;
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  /* ---- persistence ---- */
+  function collect() {
+    var data = {};
+    fields.forEach(function (el, i) {
+      if (el.hasAttribute('data-group')) {
+        var picked = [];
+        el.querySelectorAll('input').forEach(function (inp) {
+          if (inp.checked) picked.push(inp.value);
+        });
+        data['g' + i] = picked;
+      } else {
+        data['f' + i] = el.value;
+      }
+    });
+    return data;
+  }
+
+  function restore() {
+    var raw;
+    try { raw = localStorage.getItem(KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    fields.forEach(function (el, i) {
+      if (el.hasAttribute('data-group')) {
+        var picked = data['g' + i];
+        if (!picked || !picked.length) return;
+        el.querySelectorAll('input').forEach(function (inp) {
+          if (picked.indexOf(inp.value) !== -1) inp.checked = true;
+        });
+      } else if (typeof data['f' + i] === 'string') {
+        el.value = data['f' + i];
+        grow(el);
+      }
+    });
+  }
+
+  function persist(showFlag) {
+    try { localStorage.setItem(KEY, JSON.stringify(collect())); }
+    catch (e) { return; }
+    if (!showFlag) return;
+    flag.classList.add('on');
+    clearTimeout(flagTimer);
+    flagTimer = setTimeout(function () { flag.classList.remove('on'); }, 1600);
+  }
+
+  /* ---- progress across the 14 numbered questions ---- */
+  function updateProgress() {
+    var seen = {}, done = {};
+    document.querySelectorAll('[data-q]').forEach(function (el) {
+      var key = el.getAttribute('data-q').replace(/[a-z]$/, '');
+      seen[key] = true;
+      if (el.value.trim()) done[key] = true;
+    });
+    groups.forEach(function (g) {
+      var key = g.getAttribute('data-group');
+      seen[key] = true;
+      if (g.querySelector('input:checked')) done[key] = true;
+    });
+    var total = Object.keys(seen).length;
+    var filled = Object.keys(done).length;
+    progFill.style.width = (total ? (filled / total) * 100 : 0) + '%';
+    progLabel.textContent = '記入済み ' + filled + ' / ' + total;
+  }
+
+  /* ---- build the pasteable answer text ---- */
+  function buildText() {
+    var lines = ['LP制作 事前ヒアリングシート', '========================', ''];
+    var heading = null;
+    document.querySelectorAll('section.block').forEach(function (sec) {
+      var h = sec.querySelector('.block-head h2');
+      heading = h ? h.textContent.trim() : '';
+      var rows = [];
+      sec.querySelectorAll('[data-f]').forEach(function (el) {
+        var label = el.getAttribute('data-f');
+        var val;
+        if (el.hasAttribute('data-group')) {
+          var picked = [];
+          el.querySelectorAll('input').forEach(function (inp) {
+            if (inp.checked) picked.push(inp.value);
+          });
+          val = picked.join('、');
+        } else {
+          val = el.value.trim();
+        }
+        rows.push('■ ' + label + '\n' + (val || '（未記入）'));
+      });
+      if (rows.length) {
+        lines.push('【' + heading + '】', '');
+        lines.push(rows.join('\n\n'));
+        lines.push('');
+      }
+    });
+    return lines.join('\n').trim() + '\n';
+  }
+
+  /* ---- wiring ---- */
+  fields.forEach(function (el) {
+    if (el.hasAttribute('data-group')) {
+      el.addEventListener('change', function () { persist(true); updateProgress(); });
+    } else {
+      el.addEventListener('input', function () {
+        grow(el);
+        updateProgress();
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () { persist(true); }, 600);
+      });
+    }
+  });
+
+  function feedback(btn, msg) {
+    var original = btn.getAttribute('data-label') || btn.textContent;
+    btn.setAttribute('data-label', original);
+    btn.textContent = msg;
+    setTimeout(function () { btn.textContent = original; }, 2000);
+  }
+
+  var copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', function () {
+    var text = buildText();
+    var ok = function () { feedback(copyBtn, 'コピーしました'); };
+    var fallback = function () {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); ok(); }
+      catch (e) { feedback(copyBtn, 'コピーできません'); }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function () {
+    document.querySelectorAll('textarea').forEach(grow);
+    window.print();
+  });
+
+  /* ---- optional: save as a file, when the viewer can ---- */
+  var saveBtn = document.getElementById('saveBtn');
+  saveBtn.style.display = 'none';
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('downloads').then(function (downloads) {
+      if (!downloads) return;
+      saveBtn.style.display = '';
+      saveBtn.addEventListener('click', function () {
+        downloads.save({ filename: 'ヒアリングシート.txt', data: buildText() })
+          .then(function () { feedback(saveBtn, '保存しました'); })
+          .catch(function (err) {
+            if (err && err.code === 'declined') return;
+            feedback(saveBtn, '保存できません');
+          });
+      });
+    }, function () {});
+  }
+
+  restore();
+  document.querySelectorAll('textarea').forEach(grow);
+  updateProgress();
+  window.addEventListener('beforeunload', function () { persist(false); });
+})();
+</script>
