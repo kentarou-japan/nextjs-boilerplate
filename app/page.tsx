@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -24,6 +25,13 @@ export default function Home() {
             Save and see your changes instantly.
           </li>
         </ol>
+
+        <Link
+          href="/visualizer"
+          className="rounded-full bg-gradient-to-r from-fuchsia-500 via-orange-400 to-cyan-400 px-6 py-3 font-medium text-black transition hover:opacity-90"
+        >
+          ✦ Sound Art — 音で描く生成アートを見る
+        </Link>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
