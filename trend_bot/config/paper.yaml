@@ -1,0 +1,28 @@
+# 模擬運用（ペーパートレード）設定
+# 本番発注は常に無効（live_trading.enabled=false、かつ LiveBrokerStub は実装なしで常に拒否）。
+paper:
+  state_dir: state/paper              # 状態DB（bot.db）と模擬ブローカー口座（broker.db）
+  dataset: synthetic                  # synthetic | proxy_daily | real
+  synthetic:
+    markets: [ES, NK225M, FESX, ZN, FGBL, GILT, 6J, 6E, 6B, 6A, GC, HG, CL, ZC]
+    start: "2012-01-03"
+    end: "2026-09-25"
+    seed: 20260927
+    trend_strength: 0.0               # 動作確認用。成績に意味はない
+  strategy_config: config/strategy.yaml
+  initial_capital: 300000000
+  reconcile:
+    balance_tolerance: 1.0e-6         # 通貨ごとの許容差（相対）
+  halt_policy:                        # block_all: 一切発注しない / reduce_only: リスク削減のみ
+    data_quality_global: block_all
+    duplicate_order: block_all
+    unknown_order_status: block_all
+    reconciliation_mismatch: block_all
+    api_disconnect: block_all
+    margin_shortfall: reduce_only
+  margin_shortfall_trigger_mult: 1.2  # 当初証拠金/NAV > margin_usage_cap × 1.2 で証拠金不足停止
+  reduce_orders_require_approval: true   # reduce_only 時の削減注文は承認待ち（paper approve で送信）
+  auto_clear_market_data_halt: true   # 市場別データ停止は品質回復で自動解除（全体停止は手動）
+  cancel_unfilled_each_cycle: true    # 毎サイクル、未約定注文を取消して再判断
+live_trading:
+  enabled: false

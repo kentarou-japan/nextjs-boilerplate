@@ -66,5 +66,5 @@ data_quality:
   anomaly_mad_k: 12.0              # |ΔP| > k × MAD基準σ で異常値フラグ
   anomaly_window: 250
   stale_run_days: 5                # 同値が連続 n 営業日で古い価格フラグ
-  max_data_age_business_days: 1    # 判断時点で最新データが何営業日前までなら許容
+  max_data_age_business_days: 0    # 判断日に取引所暦が開場なのに当日データが無ければ FAIL（0=当日必須）
   global_halt_if_failed_markets_ge: 4

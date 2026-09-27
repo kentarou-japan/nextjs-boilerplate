@@ -56,6 +56,10 @@ class PreparedData:
         self.session = np.zeros((n, k), dtype=bool)     # market had a row that day
         self.active = np.empty((n, k), dtype=object)
         self.adv = np.full((n, k), np.nan)
+        self.last_seen = np.full((n, k), np.datetime64("NaT"), dtype="datetime64[ns]")  # latest session <= t
+        # A market whose latest row is older than this is treated as stale (no signal, target 0). Causal:
+        # it depends only on data up to t, so a holiday and the end of a data series are handled the same.
+        self.stale_days = 10 if self.bpy >= 200 else 45
         self.last_session = {}
         self.settle: dict[str, pd.DataFrame] = {}
         self.status: dict[str, pd.DataFrame] = {}
@@ -78,7 +82,8 @@ class PreparedData:
             self.last_session[m] = cont.index[-1]
             # As-of alignment onto the master timeline (forward fill from the market's last session).
             aligned = pd.DataFrame({"forecast": sig["forecast"], "sigma": sig["sigma"], "price": cont["price"],
-                                    "active": cont["active"]}).reindex(self.dates).ffill()
+                                    "active": cont["active"], "session_date": cont.index}).reindex(self.dates).ffill()
+            self.last_seen[:, j] = aligned["session_date"].values
             self.forecast[:, j] = aligned["forecast"].values
             self.sigma[:, j] = aligned["sigma"].values
             self.price[:, j] = aligned["price"].values
@@ -109,6 +114,12 @@ class PreparedData:
             self.rates = r.reindex(r.index.union(self.dates)).ffill().reindex(self.dates)
         else:
             self.rates = None
+
+    def is_stale(self, pos: int, j: int) -> bool:
+        seen = self.last_seen[pos, j]
+        if np.isnat(seen):
+            return True
+        return (self.dates[pos] - pd.Timestamp(seen)).days > self.stale_days
 
     def fx_at(self, pos: int) -> dict:
         row = self.fx.iloc[pos]
@@ -181,7 +192,7 @@ class StrategyCore:
         for j, m in enumerate(pd_.markets):
             ok = (np.isfinite(pd_.forecast[pos, j]) and np.isfinite(pd_.sigma[pos, j]) and pd_.sigma[pos, j] > 0
                   and np.isfinite(pd_.price[pos, j]) and np.isfinite(fx.get(pd_.inst[m].currency, np.nan))
-                  and pd_.active[pos, j] is not None and date <= pd_.last_session[m])
+                  and pd_.active[pos, j] is not None and not pd_.is_stale(pos, j))
             if ok or current.get(m, 0) != 0 and np.isfinite(pd_.sigma[pos, j]) and np.isfinite(pd_.price[pos, j]):
                 valid.append(m)
         dec = Decision(date=date, markets=valid)
@@ -191,9 +202,11 @@ class StrategyCore:
         fc = np.nan_to_num(pd_.forecast[pos, j])
         # Markets whose data ended or which lack a forecast are targeted at zero.
         for k, m in enumerate(valid):
-            if not np.isfinite(pd_.forecast[pos, pd_.markets.index(m)]) or date > pd_.last_session[m]:
+            jm = pd_.markets.index(m)
+            if not np.isfinite(pd_.forecast[pos, jm]) or pd_.is_stale(pos, jm):
                 fc[k] = 0.0
-        signal_markets = [m for k, m in enumerate(valid) if np.isfinite(pd_.forecast[pos, pd_.markets.index(m)])]
+        signal_markets = [m for k, m in enumerate(valid) if np.isfinite(pd_.forecast[pos, pd_.markets.index(m)])
+                          and not pd_.is_stale(pos, pd_.markets.index(m))]
         w_map = risk_weights(signal_markets, {m: pd_.inst[m].asset_class for m in valid},
                              {m: pd_.inst[m].sector for m in valid}, pc["class_budget"], pc["sector_equal_within_class"])
         w = np.array([w_map.get(m, 0.0) for m in valid])
