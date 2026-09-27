@@ -1,0 +1,19 @@
+market,date,contract,check,severity,detail
+6A,1972-12-31,PERP,anomaly,WARN,|dP|=0.0821932 > 12.0×robustσ=0.000655391
+6A,1973-02-28,PERP,anomaly,WARN,|dP|=0.139068 > 12.0×robustσ=0.000842523
+6A,1973-09-30,PERP,anomaly,WARN,|dP|=0.0639173 > 12.0×robustσ=0.000935341
+6A,1974-09-30,PERP,anomaly,WARN,|dP|=0.170017 > 12.0×robustσ=0.00168551
+6A,1976-11-30,PERP,anomaly,WARN,|dP|=0.218152 > 12.0×robustσ=0.00367167
+6A,1976-12-31,PERP,anomaly,WARN,|dP|=0.0790718 > 12.0×robustσ=0.00382233
+6A,1972-05-31,PERP,stale,WARN,settle unchanged for 4+ sessions
+6J,1973-02-28,PERP,anomaly,WARN,|dP|=0.000446108 > 12.0×robustσ=6.04691e-06
+6J,1973-11-30,PERP,anomaly,WARN,|dP|=0.000175994 > 12.0×robustσ=8.94855e-06
+6J,1974-01-31,PERP,anomaly,WARN,|dP|=0.000220932 > 12.0×robustσ=8.94855e-06
+6J,1974-02-28,PERP,anomaly,WARN,|dP|=0.000119989 > 12.0×robustσ=8.9629e-06
+6J,1974-03-31,PERP,anomaly,WARN,|dP|=0.000154962 > 12.0×robustσ=8.97726e-06
+ES,1929-11-30,PERP,anomaly,WARN,|dP|=7.41 > 12.0×robustσ=0.526323
+ES,1914-11-30,PERP,stale,WARN,settle unchanged for 4+ sessions
+GC,1980-01-31,PERP,anomaly,WARN,|dP|=220 > 12.0×robustσ=6.71618
+GC,1980-03-31,PERP,anomaly,WARN,|dP|=111 > 12.0×robustσ=7.413
+HG,2006-04-30,PERP,anomaly,WARN,|dP|=0.580947 > 12.0×robustσ=0.0422133
+HG,2006-05-31,PERP,anomaly,WARN,|dP|=0.75058 > 12.0×robustσ=0.0422133

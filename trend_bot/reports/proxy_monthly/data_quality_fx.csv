@@ -1,0 +1,13 @@
+market,date,contract,check,severity,detail
+FX:USD,1973-02-28,,anomaly,WARN,log return -0.1262
+FX:USD,1973-11-30,,anomaly,WARN,log return 0.0481
+FX:USD,1974-01-31,,anomaly,WARN,log return 0.0639
+FX:USD,1974-02-28,,anomaly,WARN,log return -0.0352
+FX:USD,1974-03-31,,anomaly,WARN,log return -0.0437
+FX:GBP,1972-10-31,,anomaly,WARN,log return -0.0333
+FX:GBP,1973-02-28,,anomaly,WARN,log return -0.0816
+FX:AUD,1972-12-31,,anomaly,WARN,log return 0.0686
+FX:AUD,1974-01-31,,anomaly,WARN,log return 0.0656
+FX:AUD,1974-09-30,,anomaly,WARN,log return -0.1374
+FX:AUD,1976-11-30,,anomaly,WARN,log return -0.1864
+FX:CAD,1973-02-28,,anomaly,WARN,log return -0.1194

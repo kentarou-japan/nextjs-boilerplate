@@ -1,0 +1,717 @@
+{
+  "dataset": "proxy_monthly",
+  "data_label": "PROXY_PRELIMINARY",
+  "frequency": "monthly",
+  "universe": [
+    "ES",
+    "ZN",
+    "6J",
+    "6E",
+    "6B",
+    "6A",
+    "6C",
+    "GC",
+    "HG",
+    "CL",
+    "NG",
+    "ZC",
+    "ZS"
+  ],
+  "dev_period": [
+    "1973-01-31",
+    "2018-12-31"
+  ],
+  "holdout_start": "2019-01-01",
+  "data_hash": "05e18c8608e38bf7dd15132e05b36a8035f095a1405de742316bdc60138e663e",
+  "notes": {
+    "ES": {
+      "source": "sp500_monthly",
+      "averaged": true,
+      "note": ""
+    },
+    "ZN": {
+      "source": "ust10y_monthly",
+      "averaged": true,
+      "note": "利回り変化×想定デュレーションで作った価格代理。クーポン・キャリー・CTD 変化を含まない"
+    },
+    "GC": {
+      "source": "gold_monthly",
+      "averaged": true,
+      "note": ""
+    },
+    "HG": {
+      "source": "imf_commodities_monthly",
+      "averaged": true,
+      "note": "USD/mt → USD/lb"
+    },
+    "ZC": {
+      "source": "imf_commodities_monthly",
+      "averaged": true,
+      "note": "USD/mt → cents/bu"
+    },
+    "ZS": {
+      "source": "imf_commodities_monthly",
+      "averaged": true,
+      "note": "USD/mt → cents/bu"
+    },
+    "CL": {
+      "source": "wti_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "NG": {
+      "source": "natgas_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "6J": {
+      "source": "fx_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "6E": {
+      "source": "fx_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "6B": {
+      "source": "fx_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "6A": {
+      "source": "fx_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "6C": {
+      "source": "fx_daily",
+      "averaged": false,
+      "note": ""
+    },
+    "_dataset": "月次代替データ。月平均系列を含むため1カ月の追加ラグを適用。キャリー・ロール・配当−金利を含まない。先物BOTの運用実績ではない。"
+  },
+  "walk_forward": {
+    "oos_years": [
+      1978,
+      1979,
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "wf_selected_oos": {
+      "start": "1978-01-31",
+      "end": "2018-12-31",
+      "years": 41.0,
+      "cagr": 0.0258421868522809,
+      "ann_mean_excess": 0.026789626730658204,
+      "ann_vol": 0.050197960060596125,
+      "sharpe": 0.5336795897347081,
+      "max_drawdown": -0.2166563471275973,
+      "maxdd_peak": "1989-10-31",
+      "maxdd_trough": "1991-07-31",
+      "maxdd_recovery": "1998-03-31",
+      "maxdd_days_peak_to_recovery": 3073,
+      "longest_dd_days": 3073,
+      "current_underwater_days": 92,
+      "worst_month": -0.05403677454201672,
+      "worst_month_date": "1978-11",
+      "worst_year": -0.18400793053230347,
+      "worst_year_date": "1990",
+      "es95_bar": -0.02857578935806403,
+      "es95_month": -0.02857578935806403,
+      "skew_month": 0.5708578662968835,
+      "pct_positive_years": 0.6341463414634146
+    },
+    "baseline_oos": {
+      "start": "1978-01-31",
+      "end": "2018-12-31",
+      "years": 41.0,
+      "cagr": 0.02576773105744823,
+      "ann_mean_excess": 0.026817837663758885,
+      "ann_vol": 0.052185412545199206,
+      "sharpe": 0.5138952890432978,
+      "max_drawdown": -0.21493194279570205,
+      "maxdd_peak": "1989-10-31",
+      "maxdd_trough": "1991-07-31",
+      "maxdd_recovery": "1998-07-31",
+      "maxdd_days_peak_to_recovery": 3195,
+      "longest_dd_days": 3195,
+      "current_underwater_days": 1065,
+      "worst_month": -0.05723558104484361,
+      "worst_month_date": "2018-12",
+      "worst_year": -0.18400793053230347,
+      "worst_year_date": "1990",
+      "es95_bar": -0.02979989525978762,
+      "es95_month": -0.02979989525978762,
+      "skew_month": 0.5435709562772348,
+      "pct_positive_years": 0.6829268292682927
+    },
+    "sharpe_improvement": 0.01978430069141024,
+    "pbo": {
+      "pbo": 0.2619047619047619,
+      "n_splits": 252,
+      "S": 10,
+      "N": 8,
+      "T": 552,
+      "median_logit": 0.6931471805599452,
+      "is_oos_slope": -0.9765996327283144,
+      "mean_is_sharpe_of_winner": 0.1614305155414662,
+      "mean_oos_sharpe_of_winner": 0.15297806552070686
+    },
+    "adopt_alternative": false,
+    "decision": "基準案を維持（採用規則を満たさない）"
+  },
+  "base_dev": {
+    "start": "1973-01-31",
+    "end": "2018-12-31",
+    "years": 46.0,
+    "cagr": 0.025337911370443722,
+    "ann_mean_excess": 0.026327358991631987,
+    "ann_vol": 0.05079107178849329,
+    "sharpe": 0.5183461987426784,
+    "max_drawdown": -0.21493194279570216,
+    "maxdd_peak": "1989-10-31",
+    "maxdd_trough": "1991-07-31",
+    "maxdd_recovery": "1998-07-31",
+    "maxdd_days_peak_to_recovery": 3195,
+    "longest_dd_days": 3195,
+    "current_underwater_days": 1065,
+    "worst_month": -0.05723558104484361,
+    "worst_month_date": "2018-12",
+    "worst_year": -0.18400793053230347,
+    "worst_year_date": "1990",
+    "es95_bar": -0.028937280203338425,
+    "es95_month": -0.028937280203338425,
+    "skew_month": 0.5283496398604406,
+    "pct_positive_years": 0.6956521739130435,
+    "turnover_notional_per_year": 4.8035008509069,
+    "costs_pct_nav_per_year": 0.0008681426369179375,
+    "avg_contracts_abs": 100.3731884057971,
+    "avg_positions": 10.31340579710145,
+    "margin_usage_mean": 0.048721735897028294,
+    "margin_usage_max": 0.09231970901246184,
+    "gross_notional_mean": 1.0348351503521103,
+    "exante_vol_mean": 0.040227652203849024,
+    "data_label": "PROXY_PRELIMINARY",
+    "cash_rates_missing": true
+  },
+  "attribution_dev": [
+    {
+      "item": "6A",
+      "type": "market",
+      "asset_class": "fx",
+      "gross_pnl_pct": 10.292182417445153,
+      "cost_pct": -0.2989811582668462,
+      "net_pct": 9.993201259178306
+    },
+    {
+      "item": "6B",
+      "type": "market",
+      "asset_class": "fx",
+      "gross_pnl_pct": 16.975125967813927,
+      "cost_pct": -0.2810462659472345,
+      "net_pct": 16.69407970186669
+    },
+    {
+      "item": "6C",
+      "type": "market",
+      "asset_class": "fx",
+      "gross_pnl_pct": 20.382799190995797,
+      "cost_pct": -0.4788135104870611,
+      "net_pct": 19.903985680508736
+    },
+    {
+      "item": "6E",
+      "type": "market",
+      "asset_class": "fx",
+      "gross_pnl_pct": -6.350065876764501,
+      "cost_pct": -0.10396967640913615,
+      "net_pct": -6.454035553173637
+    },
+    {
+      "item": "6J",
+      "type": "market",
+      "asset_class": "fx",
+      "gross_pnl_pct": 2.8539521581670653,
+      "cost_pct": -0.2670416225538728,
+      "net_pct": 2.5869105356131925
+    },
+    {
+      "item": "CL",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": -11.078306233333334,
+      "cost_pct": -0.1310024589391533,
+      "net_pct": -11.209308692272488
+    },
+    {
+      "item": "ES",
+      "type": "market",
+      "asset_class": "equity",
+      "gross_pnl_pct": 129.81703116333338,
+      "cost_pct": -2.7147628872181637,
+      "net_pct": 127.10226827611523
+    },
+    {
+      "item": "GC",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": 56.38685621666666,
+      "cost_pct": -0.4287297601837355,
+      "net_pct": 55.95812645648292
+    },
+    {
+      "item": "HG",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": 25.43572090725413,
+      "cost_pct": -0.41547556449597495,
+      "net_pct": 25.020245342758155
+    },
+    {
+      "item": "NG",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": 4.408505333333333,
+      "cost_pct": -0.07283728856978897,
+      "net_pct": 4.335668044763544
+    },
+    {
+      "item": "ZC",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": -2.135899168913998,
+      "cost_pct": -0.7161193438791569,
+      "net_pct": -2.8520185127931548
+    },
+    {
+      "item": "ZN",
+      "type": "market",
+      "asset_class": "rates",
+      "gross_pnl_pct": -20.797202020907797,
+      "cost_pct": -2.267641732800627,
+      "net_pct": -23.064843753708423
+    },
+    {
+      "item": "ZS",
+      "type": "market",
+      "asset_class": "commodity",
+      "gross_pnl_pct": -1.2579047782315314,
+      "cost_pct": -0.35838649763505526,
+      "net_pct": -1.6162912758665866
+    },
+    {
+      "item": "commodity",
+      "type": "asset_class",
+      "asset_class": "commodity",
+      "gross_pnl_pct": 71.75897227677525,
+      "cost_pct": -2.122550913702865,
+      "net_pct": 69.6364213630724
+    },
+    {
+      "item": "equity",
+      "type": "asset_class",
+      "asset_class": "equity",
+      "gross_pnl_pct": 129.81703116333338,
+      "cost_pct": -2.7147628872181637,
+      "net_pct": 127.10226827611523
+    },
+    {
+      "item": "fx",
+      "type": "asset_class",
+      "asset_class": "fx",
+      "gross_pnl_pct": 44.15399385765744,
+      "cost_pct": -1.4298522336641506,
+      "net_pct": 42.72414162399329
+    },
+    {
+      "item": "rates",
+      "type": "asset_class",
+      "asset_class": "rates",
+      "gross_pnl_pct": -20.797202020907797,
+      "cost_pct": -2.267641732800627,
+      "net_pct": -23.064843753708423
+    },
+    {
+      "item": "fx_translation",
+      "type": "other",
+      "asset_class": NaN,
+      "gross_pnl_pct": NaN,
+      "cost_pct": NaN,
+      "net_pct": 0.0
+    },
+    {
+      "item": "fx_conversion_cost",
+      "type": "other",
+      "asset_class": NaN,
+      "gross_pnl_pct": NaN,
+      "cost_pct": NaN,
+      "net_pct": -0.25561154280678294
+    },
+    {
+      "item": "cash_interest",
+      "type": "other",
+      "asset_class": NaN,
+      "gross_pnl_pct": NaN,
+      "cost_pct": NaN,
+      "net_pct": 0.0
+    },
+    {
+      "item": "TOTAL_NAV_CHANGE",
+      "type": "total",
+      "asset_class": NaN,
+      "gross_pnl_pct": NaN,
+      "cost_pct": NaN,
+      "net_pct": 216.14237596666612
+    }
+  ],
+  "leave_one_year_out_sharpe_range": [
+    0.46514414451920005,
+    0.6258947405938969
+  ],
+  "yearly_returns_dev": {
+    "1973": 0.02065909217125128,
+    "1974": 0.03144566169865781,
+    "1975": -0.03587248360300621,
+    "1976": 0.051295781622250125,
+    "1977": 0.04396492530674112,
+    "1978": 0.1218368472499829,
+    "1979": 0.16126980789670742,
+    "1980": 0.10424482543670455,
+    "1981": 0.018359560648391726,
+    "1982": -0.0033259562260276043,
+    "1983": 0.01335578513002944,
+    "1984": -0.0234444915614187,
+    "1985": 0.11827071656129862,
+    "1986": 0.10020393321769672,
+    "1987": 0.05946112936418135,
+    "1988": 0.03159735491290716,
+    "1989": 0.0110015736968605,
+    "1990": -0.18400793053230347,
+    "1991": -0.026564742056490176,
+    "1992": 0.006541749550684317,
+    "1993": 0.01953831947285445,
+    "1994": -0.012897887151757104,
+    "1995": 0.01606211443470329,
+    "1996": 0.029218741577761387,
+    "1997": 0.08733600893539228,
+    "1998": 0.11860939317415209,
+    "1999": 0.0002582654348803892,
+    "2000": -0.0009352343565475207,
+    "2001": 0.020584482509762747,
+    "2002": -0.03526351033696451,
+    "2003": 0.10567924768367254,
+    "2004": -0.02963984267823072,
+    "2005": 0.010325465467635686,
+    "2006": 0.12626235382545148,
+    "2007": 0.10923527687384538,
+    "2008": 0.0681945733845517,
+    "2009": -0.05389688526728187,
+    "2010": -0.043523853960862335,
+    "2011": 0.0010361146919370956,
+    "2012": -0.015389440563162493,
+    "2013": 0.10153272665434132,
+    "2014": 0.03921571204520502,
+    "2015": 0.04733434740054343,
+    "2016": -0.0725366913316885,
+    "2017": 0.03710751228019582,
+    "2018": -0.035716327969834594
+  },
+  "shock_scenarios_dev": {
+    "3sigma_all_adverse": {
+      "max_loss_pct_nav": 12.54516644924895,
+      "p99_loss_pct_nav": 11.950404457949123,
+      "median_loss_pct_nav": 0.0,
+      "worst_date": "2014-11-30"
+    },
+    "5sigma_all_adverse": {
+      "max_loss_pct_nav": 20.90861074874825,
+      "p99_loss_pct_nav": 19.917340763248536,
+      "median_loss_pct_nav": 0.0,
+      "worst_date": "2014-11-30"
+    }
+  },
+  "capacity": [
+    {
+      "capital_jpy": 100000000.0,
+      "sharpe_int": 0.5162641416198128,
+      "sharpe_frac": 0.5152916737940295,
+      "cagr_int": 0.025080064425731408,
+      "cagr_frac": 0.025000428410416164,
+      "tracking_error_int_vs_frac": 0.009997381201631654,
+      "costs_pct_nav_per_year": 0.0008842582474248182,
+      "avg_contracts_abs": 33.27717391304348,
+      "avg_positions": 8.61231884057971,
+      "ann_vol_int": 0.05048237785745406
+    },
+    {
+      "capital_jpy": 300000000.0,
+      "sharpe_int": 0.5183461987426784,
+      "sharpe_frac": 0.5147054515145031,
+      "cagr_int": 0.025337911370443722,
+      "cagr_frac": 0.024970561593633755,
+      "tracking_error_int_vs_frac": 0.004608490529569884,
+      "costs_pct_nav_per_year": 0.0008681426369179375,
+      "avg_contracts_abs": 100.3731884057971,
+      "avg_positions": 10.31340579710145,
+      "ann_vol_int": 0.05079107178849329
+    },
+    {
+      "capital_jpy": 1000000000.0,
+      "sharpe_int": 0.5113151293786881,
+      "sharpe_frac": 0.5135612684918809,
+      "cagr_int": 0.02489229219520861,
+      "cagr_frac": 0.024912268962637096,
+      "tracking_error_int_vs_frac": 0.0018311236679508414,
+      "costs_pct_nav_per_year": 0.0008950178110684175,
+      "avg_contracts_abs": 331.7119565217391,
+      "avg_positions": 10.644927536231885,
+      "ann_vol_int": 0.050622242020500356
+    }
+  ],
+  "comparison_dev": {
+    "D_monthly": {
+      "start": "1973-01-31",
+      "end": "2018-12-31",
+      "years": 46.0,
+      "cagr": 0.025337911370443722,
+      "ann_mean_excess": 0.026327358991631987,
+      "ann_vol": 0.05079107178849329,
+      "sharpe": 0.5183461987426784,
+      "max_drawdown": -0.21493194279570216,
+      "maxdd_peak": "1989-10-31",
+      "maxdd_trough": "1991-07-31",
+      "maxdd_recovery": "1998-07-31",
+      "maxdd_days_peak_to_recovery": 3195,
+      "longest_dd_days": 3195,
+      "current_underwater_days": 1065,
+      "worst_month": -0.05723558104484361,
+      "worst_month_date": "2018-12",
+      "worst_year": -0.18400793053230347,
+      "worst_year_date": "1990",
+      "es95_bar": -0.028937280203338425,
+      "es95_month": -0.028937280203338425,
+      "skew_month": 0.5283496398604406,
+      "pct_positive_years": 0.6956521739130435
+    },
+    "D_vol_matched_to_B_usd_excess": {
+      "start": "1973-01-31",
+      "end": "2018-11-30",
+      "years": 45.92,
+      "cagr": 0.03645691613330815,
+      "ann_mean_excess": 0.038233753173422064,
+      "ann_vol": 0.06930968640273104,
+      "sharpe": 0.5516365050515581,
+      "max_drawdown": -0.28563795366679134,
+      "maxdd_peak": "1989-10-31",
+      "maxdd_trough": "1991-07-31",
+      "maxdd_recovery": "1998-08-31",
+      "maxdd_days_peak_to_recovery": 3226,
+      "longest_dd_days": 3226,
+      "current_underwater_days": 1034,
+      "worst_month": -0.07479743976333064,
+      "worst_month_date": "1978-11",
+      "worst_year": -0.2462769438336545,
+      "worst_year_date": "1990",
+      "es95_bar": -0.038158056695397465,
+      "es95_month": -0.038158056695397465,
+      "skew_month": 0.656798178505215,
+      "pct_positive_years": 0.6956521739130435
+    },
+    "B_usd_excess": {
+      "start": "1973-01-31",
+      "end": "2018-11-30",
+      "years": 45.92,
+      "cagr": 0.038429432889605764,
+      "ann_mean_excess": 0.040165112936413463,
+      "ann_vol": 0.06930968640273104,
+      "sharpe": 0.5795021593811571,
+      "max_drawdown": -0.3054341521189198,
+      "maxdd_peak": "1980-07-31",
+      "maxdd_trough": "1982-06-30",
+      "maxdd_recovery": "1986-03-31",
+      "maxdd_days_peak_to_recovery": 2069,
+      "longest_dd_days": 2069,
+      "current_underwater_days": 303,
+      "worst_month": -0.08995369682309218,
+      "worst_month_date": "2008-10",
+      "worst_year": -0.15158723108932604,
+      "worst_year_date": "1981",
+      "es95_bar": -0.04439199831797919,
+      "es95_month": -0.04439199831797918,
+      "skew_month": -0.12606485786872723,
+      "pct_positive_years": 0.6739130434782609
+    },
+    "period_B_excess": [
+      "1973-01-31",
+      "2018-11-30"
+    ],
+    "B_jpy_unhedged_total": {
+      "start": "1973-01-31",
+      "end": "2018-12-31",
+      "years": 46.0,
+      "cagr": 0.06304413890633187,
+      "ann_mean_excess": 0.06852175628035476,
+      "ann_vol": 0.12025191957990662,
+      "sharpe": 0.5698183989056614,
+      "max_drawdown": -0.3131675960537136,
+      "maxdd_peak": "1985-06-30",
+      "maxdd_trough": "1987-12-31",
+      "maxdd_recovery": "1989-11-30",
+      "maxdd_days_peak_to_recovery": 1614,
+      "longest_dd_days": 1980,
+      "current_underwater_days": 92,
+      "worst_month": -0.15501251013567574,
+      "worst_month_date": "2008-10",
+      "worst_year": -0.27292743372176875,
+      "worst_year_date": "2008",
+      "es95_bar": -0.0738968051675706,
+      "es95_month": -0.0738968051675706,
+      "skew_month": -0.20832876170953013,
+      "pct_positive_years": 0.6739130434782609
+    },
+    "C_single_12m_monthly": {
+      "start": "1973-01-31",
+      "end": "2018-12-31",
+      "years": 46.0,
+      "cagr": 0.03384885078642874,
+      "ann_mean_excess": 0.034999826347224955,
+      "ann_vol": 0.057935033783728475,
+      "sharpe": 0.6041219631955221,
+      "max_drawdown": -0.22527400123612407,
+      "maxdd_peak": "1988-11-30",
+      "maxdd_trough": "1991-06-30",
+      "maxdd_recovery": "1998-12-31",
+      "maxdd_days_peak_to_recovery": 3683,
+      "longest_dd_days": 3683,
+      "current_underwater_days": 1096,
+      "worst_month": -0.05623157105181109,
+      "worst_month_date": "2018-12",
+      "worst_year": -0.19284015335954185,
+      "worst_year_date": "1990",
+      "es95_bar": -0.033217110567581476,
+      "es95_month": -0.033217110567581476,
+      "skew_month": 0.34724780772889347,
+      "pct_positive_years": 0.717391304347826
+    },
+    "A_cash": {
+      "note": "超過収益ベースでは定義上0。JPY短期金利データ未入手のため水準は表示不可"
+    },
+    "A_usd_tbill_reference": {
+      "ann_return": 0.04680664144597291,
+      "period": [
+        "1973-01-31",
+        "2018-11-30"
+      ]
+    },
+    "overlay": {
+      "table": [
+        {
+          "bot_weight": 0.0,
+          "cagr": 0.07661142684021383,
+          "ann_vol": 0.16920591024628057,
+          "max_drawdown": -0.581129024194441,
+          "worst_year": -0.5061271637534056,
+          "es95_month": -0.10873175746925375,
+          "sharpe_like(no rf)": 0.5232533433556461,
+          "start": "1973-01-31",
+          "end": "2018-12-31"
+        },
+        {
+          "bot_weight": 0.1,
+          "cagr": 0.07287527872864841,
+          "ann_vol": 0.1526297342771958,
+          "max_drawdown": -0.5329905579045171,
+          "worst_year": -0.4620402304236434,
+          "es95_month": -0.09837887497350885,
+          "sharpe_like(no rf)": 0.5393217692194692,
+          "start": "1973-01-31",
+          "end": "2018-12-31"
+        },
+        {
+          "bot_weight": 0.2,
+          "cagr": 0.06881341470726965,
+          "ann_vol": 0.13626310771394606,
+          "max_drawdown": -0.4804865263721957,
+          "worst_year": -0.41523404045233203,
+          "es95_month": -0.08812110139203237,
+          "sharpe_like(no rf)": 0.5584454932555427,
+          "start": "1973-01-31",
+          "end": "2018-12-31"
+        }
+      ],
+      "corr_bot_equity": 0.051210551909542365,
+      "bot_mean_in_worst_equity_decile": -0.0014512465109878287,
+      "eq_mean_in_worst_equity_decile": -0.08601087576029297
+    },
+    "corr_D_vs_equity_usd_excess": 0.043197262662008684
+  },
+  "historical_windows_dev": {
+    "2008_GFC (2008-09..2009-03)": {
+      "return": 0.022151819764727687,
+      "max_dd": -0.010676225457275201,
+      "n_bars": 7,
+      "markets_with_data": [
+        "6A",
+        "6B",
+        "6C",
+        "6E",
+        "6J",
+        "CL",
+        "ES",
+        "GC",
+        "HG",
+        "NG",
+        "ZC",
+        "ZN",
+        "ZS"
+      ]
+    },
+    "2020_COVID (2020-02..2020-04)": {
+      "note": "開発期間外または該当データなし"
+    },
+    "2022_rates_inflation (2022)": {
+      "note": "開発期間外または該当データなし"
+    },
+    "2025 (2025-01..2025-12)": {
+      "note": "開発期間外または該当データなし"
+    }
+  }
+}

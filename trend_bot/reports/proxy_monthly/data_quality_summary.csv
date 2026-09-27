@@ -1,0 +1,8 @@
+market,check,severity,count
+6A,anomaly,WARN,6
+6A,stale,WARN,1
+6J,anomaly,WARN,5
+ES,anomaly,WARN,1
+ES,stale,WARN,1
+GC,anomaly,WARN,2
+HG,anomaly,WARN,2
