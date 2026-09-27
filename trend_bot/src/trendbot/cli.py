@@ -137,7 +137,8 @@ def cmd_paper(args):
             rep = runner.run_day(d)
             if "disconnected" in broker.faults and args.auto_reconnect:
                 broker.clear_faults()
-            print(f"{rep.date} {rep.status:26s} nav={rep.nav if rep.nav is None else round(rep.nav):>12} "
+            nav_s = "—" if rep.nav is None else f"{rep.nav:,.0f}"
+            print(f"{rep.date} {rep.status:26s} nav={nav_s:>14} "
                   f"sent={rep.orders_sent} held={rep.orders_held} halts={[h['scope'] + ':' + h['reason'] for h in rep.halts]}")
         return
     if args.action == "status":

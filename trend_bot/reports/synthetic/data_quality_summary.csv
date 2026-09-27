@@ -1,0 +1,12 @@
+market,check,severity,count
+6J,anomaly,WARN,1
+CL,anomaly,WARN,3
+CL,non_positive_price,WARN,1
+FESX,anomaly,WARN,2
+GILT,anomaly,WARN,5
+HG,anomaly,WARN,4
+NG,anomaly,WARN,2
+NK225M,status_halt,INFO,3
+ZC,anomaly,WARN,1
+ZC,status_limit,INFO,6
+ZS,anomaly,WARN,4

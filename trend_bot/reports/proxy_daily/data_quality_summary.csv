@@ -1,0 +1,16 @@
+market,check,severity,count
+6A,anomaly,WARN,12
+6A,stale,WARN,22
+6B,anomaly,WARN,34
+6B,stale,WARN,1
+6C,anomaly,WARN,1
+6J,anomaly,WARN,79
+6J,gap,WARN,1
+6J,stale,WARN,10
+CL,anomaly,WARN,6
+CL,gap,WARN,3
+CL,non_positive_price,WARN,1
+ES,anomaly,WARN,2
+NG,anomaly,WARN,46
+NG,gap,WARN,78
+NG,stale,WARN,1

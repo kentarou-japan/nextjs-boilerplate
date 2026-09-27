@@ -1,0 +1,172 @@
+initialized /home/user/nextjs-boilerplate/trend_bot/state/paper_faults
+## step1: timeout on submit 2024-02-06
+startup_reconcile: {"ok": true, "problems": [], "mismatch": [], "unapplied_fills": 0}
+2024-01-02 ok                         nav=   300,000,000 sent=14 held=0 halts=[]
+2024-01-03 ok                         nav=   299,970,931 sent=10 held=0 halts=[]
+2024-01-04 ok                         nav=   300,841,882 sent=6 held=0 halts=[]
+2024-01-05 ok                         nav=   300,644,836 sent=5 held=0 halts=[]
+2024-01-08 ok                         nav=   300,934,350 sent=1 held=0 halts=[]
+2024-01-09 ok                         nav=   303,151,708 sent=2 held=0 halts=[]
+2024-01-10 ok                         nav=   301,463,840 sent=1 held=0 halts=[]
+2024-01-11 ok                         nav=   300,329,512 sent=2 held=0 halts=[]
+2024-01-12 ok                         nav=   299,646,106 sent=2 held=0 halts=[]
+2024-01-15 ok                         nav=   300,156,670 sent=5 held=0 halts=[]
+2024-01-16 ok                         nav=   300,470,965 sent=1 held=0 halts=[]
+2024-01-17 ok                         nav=   300,617,423 sent=4 held=0 halts=[]
+2024-01-18 ok                         nav=   300,174,599 sent=2 held=0 halts=[]
+2024-01-19 ok                         nav=   300,891,887 sent=5 held=0 halts=[]
+2024-01-22 ok                         nav=   300,236,024 sent=3 held=0 halts=[]
+2024-01-23 ok                         nav=   300,205,381 sent=2 held=0 halts=[]
+2024-01-24 ok                         nav=   301,168,411 sent=4 held=0 halts=[]
+2024-01-25 ok                         nav=   302,031,318 sent=1 held=0 halts=[]
+2024-01-26 ok                         nav=   300,969,334 sent=2 held=0 halts=[]
+2024-01-29 ok                         nav=   300,869,499 sent=5 held=0 halts=[]
+2024-01-30 ok                         nav=   300,063,529 sent=2 held=0 halts=[]
+2024-01-31 ok                         nav=   299,255,802 sent=0 held=0 halts=[]
+2024-02-01 ok                         nav=   299,175,092 sent=1 held=0 halts=[]
+2024-02-02 ok                         nav=   299,164,102 sent=2 held=0 halts=[]
+2024-02-05 ok                         nav=   298,442,895 sent=2 held=0 halts=[]
+[inject] timeout_on_submit on 2024-02-06
+{"ts": "2026-09-27T17:13:34.653+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "unknown_order_status", "detail": "TB-3e6afb9d8df36136fffb: simulated timeout after order reached broker", "date": "2024-02-06"}
+2024-02-06 ok_with_halts              nav=   298,482,426 sent=0 held=0 halts=['global:unknown_order_status']
+2024-02-07 ok_with_halts              nav=   299,065,436 sent=0 held=0 halts=['global:unknown_order_status']
+2024-02-08 ok_with_halts              nav=   298,698,166 sent=0 held=0 halts=['global:unknown_order_status']
+2024-02-09 ok_with_halts              nav=   298,600,835 sent=0 held=0 halts=['global:unknown_order_status']
+## step2: operator resume
+{
+ "cleared": [
+  {
+   "id": 1,
+   "scope": "global",
+   "reason": "unknown_order_status",
+   "detail": "TB-3e6afb9d8df36136fffb: simulated timeout after order reached broker",
+   "created_utc": "2026-09-27T17:13:34+00:00",
+   "created_date": "2024-02-06"
+  }
+ ],
+ "refused": [],
+ "reconcile": {
+  "ok": true,
+  "problems": [],
+  "mismatch": [],
+  "unapplied_fills": 0
+ },
+ "active": []
+}
+## step3: API disconnect 2024-02-14 (auto reconnect next day)
+startup_reconcile: {"ok": true, "problems": [], "mismatch": [], "unapplied_fills": 0}
+2024-02-12 ok                         nav=   298,645,250 sent=6 held=0 halts=[]
+2024-02-13 ok                         nav=   298,295,053 sent=7 held=0 halts=[]
+[inject] disconnected on 2024-02-14
+{"ts": "2026-09-27T17:14:14.379+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "api_disconnect", "detail": "simulated API disconnect", "date": "2024-02-14"}
+2024-02-14 halted_api_disconnect      nav=             — sent=0 held=0 halts=['global:api_disconnect']
+2024-02-15 ok_with_halts              nav=   298,429,854 sent=0 held=0 halts=['global:api_disconnect']
+2024-02-16 ok_with_halts              nav=   298,328,888 sent=0 held=0 halts=['global:api_disconnect']
+2024-02-19 ok_with_halts              nav=   298,863,800 sent=0 held=0 halts=['global:api_disconnect']
+2024-02-20 ok_with_halts              nav=   298,253,398 sent=0 held=0 halts=['global:api_disconnect']
+## step4: operator resume
+{
+ "cleared": [
+  {
+   "id": 2,
+   "scope": "global",
+   "reason": "api_disconnect",
+   "detail": "simulated API disconnect",
+   "created_utc": "2026-09-27T17:14:14+00:00",
+   "created_date": "2024-02-14"
+  }
+ ],
+ "refused": [],
+ "reconcile": {
+  "ok": true,
+  "problems": [],
+  "mismatch": [],
+  "unapplied_fills": 0
+ },
+ "active": []
+}
+## step5: simulated restart → reconcile
+{
+ "ok": true,
+ "problems": [],
+ "mismatch": [],
+ "unapplied_fills": 0
+}
+## step6: position drift at broker 2024-02-26
+startup_reconcile: {"ok": true, "problems": [], "mismatch": [], "unapplied_fills": 0}
+2024-02-21 ok                         nav=   298,756,526 sent=5 held=0 halts=[]
+2024-02-22 ok                         nav=   299,067,072 sent=12 held=0 halts=[]
+2024-02-23 ok                         nav=   298,492,550 sent=4 held=0 halts=[]
+[inject] position_drift on 2024-02-26
+{"ts": "2026-09-27T17:15:14.249+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "reconciliation_mismatch", "detail": "6A/6AH2024: internal=3.0 broker=4.0", "date": "2024-02-26"}
+2024-02-26 ok_with_halts              nav=   296,588,054 sent=0 held=0 halts=['global:reconciliation_mismatch']
+{"ts": "2026-09-27T17:15:18.157+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "reconciliation_mismatch", "detail": "6A/6AH2024: internal=3.0 broker=4.0; USD: internal=14123.32 broker=15339.28", "date": "2024-02-27"}
+2024-02-27 ok_with_halts              nav=   296,040,038 sent=0 held=0 halts=['global:reconciliation_mismatch']
+{"ts": "2026-09-27T17:15:22.333+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "reconciliation_mismatch", "detail": "6A/6AH2024: internal=3.0 broker=4.0; USD: internal=14274.73 broker=14820.75", "date": "2024-02-28"}
+2024-02-28 ok_with_halts              nav=   295,628,537 sent=0 held=0 halts=['global:reconciliation_mismatch']
+{"ts": "2026-09-27T17:15:26.673+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "reconciliation_mismatch", "detail": "6A/6AH2024: internal=3.0 broker=4.0; USD: internal=15070.53 broker=15926.58", "date": "2024-02-29"}
+2024-02-29 ok_with_halts              nav=   294,034,025 sent=0 held=0 halts=['global:reconciliation_mismatch']
+## step7: resume attempt (must be refused while mismatch persists)
+{"ts": "2026-09-27T17:15:36.400+00:00", "level": "WARNING", "logger": "trendbot.paper", "event": "halt", "scope": "global", "reason": "reconciliation_mismatch", "detail": "6A/6AH2024: internal=3.0 broker=4.0", "date": "2024-02-29"}
+{
+ "cleared": [],
+ "refused": [
+  {
+   "id": 3,
+   "scope": "global",
+   "reason": "reconciliation_mismatch",
+   "detail": "6A/6AH2024: internal=3.0 broker=4.0",
+   "created_utc": "2026-09-27T17:15:14+00:00",
+   "created_date": "2024-02-26"
+  }
+ ],
+ "reconcile": {
+  "ok": false,
+  "problems": [],
+  "mismatch": [
+   "6A/6AH2024: internal=3.0 broker=4.0"
+  ],
+  "unapplied_fills": 0
+ },
+ "active": [
+  {
+   "id": 3,
+   "scope": "global",
+   "reason": "reconciliation_mismatch",
+   "detail": "6A/6AH2024: internal=3.0 broker=4.0",
+   "created_utc": "2026-09-27T17:15:14+00:00",
+   "created_date": "2024-02-26"
+  }
+ ]
+}
+{
+ "last_processed_date": "2024-02-29",
+ "active_halts": [
+  {
+   "id": 3,
+   "scope": "global",
+   "reason": "reconciliation_mismatch",
+   "detail": "6A/6AH2024: internal=3.0 broker=4.0",
+   "created_utc": "2026-09-27T17:15:14+00:00",
+   "created_date": "2024-02-26"
+  }
+ ],
+ "positions": {
+  "6A/6AH2024": 3.0,
+  "6B/6BH2024": 2.0,
+  "6E/6EH2024": -4.0,
+  "6J/6JH2024": -1.0,
+  "ES/ESH2024": 4.0,
+  "FESX/FESXH2024": -8.0,
+  "FGBL/FGBLH2024": -5.0,
+  "NK225M/NK225MH2024": -57.0,
+  "GC/GCJ2024": 6.0,
+  "CL/CLJ2024": 1.0,
+  "GILT/GILTM2024": -5.0,
+  "HG/HGK2024": 4.0,
+  "ZC/ZCK2024": 6.0,
+  "ZN/ZNM2024": -5.0
+ },
+ "open_orders": []
+}
+/home/user/nextjs-boilerplate/trend_bot/state/paper_faults/dashboard.html

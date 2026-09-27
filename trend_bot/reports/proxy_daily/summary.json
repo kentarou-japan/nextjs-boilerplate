@@ -583,5 +583,251 @@
     "2025 (2025-01..2025-12)": {
       "note": "開発期間外または該当データなし"
     }
+  },
+  "holdout": {
+    "summary": {
+      "start": "2021-01-04",
+      "end": "2026-09-22",
+      "years": 5.71,
+      "cagr": 0.006897835209936032,
+      "ann_mean_excess": 0.008664290095580923,
+      "ann_vol": 0.060194417882438615,
+      "sharpe": 0.1439384315087576,
+      "max_drawdown": -0.20261095326320877,
+      "maxdd_peak": "2022-09-26",
+      "maxdd_trough": "2026-01-20",
+      "maxdd_recovery": "未回復",
+      "maxdd_days_peak_to_recovery": 1457,
+      "longest_dd_days": 1457,
+      "current_underwater_days": 1457,
+      "worst_month": -0.028888229831528056,
+      "worst_month_date": "2023-11",
+      "worst_year": -0.05896342453405179,
+      "worst_year_date": "2024",
+      "es95_bar": -0.007471830116420715,
+      "es95_month": -0.02655393330831431,
+      "skew_month": 2.2053923612141215,
+      "pct_positive_years": 0.5
+    },
+    "C_summary": {
+      "start": "2021-01-04",
+      "end": "2026-09-22",
+      "years": 5.71,
+      "cagr": 0.012529902741114318,
+      "ann_mean_excess": 0.016433878425413093,
+      "ann_vol": 0.0895892977880176,
+      "sharpe": 0.1834357320703444,
+      "max_drawdown": -0.21505127749832775,
+      "maxdd_peak": "2022-09-27",
+      "maxdd_trough": "2024-01-12",
+      "maxdd_recovery": "未回復",
+      "maxdd_days_peak_to_recovery": 1456,
+      "longest_dd_days": 1456,
+      "current_underwater_days": 1456,
+      "worst_month": -0.04039988058480226,
+      "worst_month_date": "2021-11",
+      "worst_year": -0.05465229134667304,
+      "worst_year_date": "2023",
+      "es95_bar": -0.009232433238140542,
+      "es95_month": -0.032310799472179484,
+      "skew_month": 1.1323473013555645,
+      "pct_positive_years": 0.5
+    },
+    "yearly": {
+      "2021": 0.062358424979910954,
+      "2022": 0.09590297833252426,
+      "2023": -0.05209361620772013,
+      "2024": -0.05896342453405179,
+      "2025": -0.04233637422099934,
+      "2026": 0.045758376282853286
+    },
+    "historical_windows": {
+      "2022_rates_inflation (2022)": {
+        "return": 0.09590297833252426,
+        "markets_with_data": [
+          "6A",
+          "6B",
+          "6C",
+          "6E",
+          "6J",
+          "CL",
+          "NG"
+        ]
+      },
+      "2025 (2025-01..2025-12)": {
+        "return": -0.04233637422099934,
+        "markets_with_data": [
+          "6A",
+          "6B",
+          "6C",
+          "6E",
+          "6J",
+          "CL",
+          "NG"
+        ]
+      }
+    },
+    "log_entry": {
+      "dataset": "proxy_daily",
+      "config_hash": "301fb1b32b477b546947f9d59a30ec014adbee489e55f9177538dc52c3f15b08",
+      "data_hash": "b6f8153c058d06098295434f7f2ca036cca9a5192e829d4b3450abe3249f6c66",
+      "evaluated_utc": "2026-09-27T16:56:37+00:00",
+      "n_prior_evaluations_same_dataset": 0,
+      "summary": {
+        "start": "2021-01-04",
+        "end": "2026-09-22",
+        "years": 5.71,
+        "cagr": 0.006897835209936032,
+        "ann_mean_excess": 0.008664290095580923,
+        "ann_vol": 0.060194417882438615,
+        "sharpe": 0.1439384315087576,
+        "max_drawdown": -0.20261095326320877,
+        "maxdd_peak": "2022-09-26",
+        "maxdd_trough": "2026-01-20",
+        "maxdd_recovery": "未回復",
+        "maxdd_days_peak_to_recovery": 1457,
+        "longest_dd_days": 1457,
+        "current_underwater_days": 1457,
+        "worst_month": -0.028888229831528056,
+        "worst_month_date": "2023-11",
+        "worst_year": -0.05896342453405179,
+        "worst_year_date": "2024",
+        "es95_bar": -0.007471830116420715,
+        "es95_month": -0.02655393330831431,
+        "skew_month": 2.2053923612141215,
+        "pct_positive_years": 0.5
+      }
+    },
+    "attribution_full": [
+      {
+        "item": "6A",
+        "type": "market",
+        "asset_class": "fx",
+        "gross_pnl_pct": 3.222205299620967,
+        "cost_pct": -0.7240314326231523,
+        "net_pct": 2.4981738669978144
+      },
+      {
+        "item": "6B",
+        "type": "market",
+        "asset_class": "fx",
+        "gross_pnl_pct": 4.650306743133951,
+        "cost_pct": -0.7139346479682754,
+        "net_pct": 3.9363720951656758
+      },
+      {
+        "item": "6C",
+        "type": "market",
+        "asset_class": "fx",
+        "gross_pnl_pct": 5.647407341575509,
+        "cost_pct": -0.9206566981340218,
+        "net_pct": 4.726750643441487
+      },
+      {
+        "item": "6E",
+        "type": "market",
+        "asset_class": "fx",
+        "gross_pnl_pct": 6.153927270616469,
+        "cost_pct": -0.4932737537167283,
+        "net_pct": 5.660653516899741
+      },
+      {
+        "item": "6J",
+        "type": "market",
+        "asset_class": "fx",
+        "gross_pnl_pct": 12.682108647516669,
+        "cost_pct": -0.5492643652637899,
+        "net_pct": 12.13284428225288
+      },
+      {
+        "item": "CL",
+        "type": "market",
+        "asset_class": "commodity",
+        "gross_pnl_pct": 3.2143475333333345,
+        "cost_pct": -0.831180100186847,
+        "net_pct": 2.3831674331464874
+      },
+      {
+        "item": "ES",
+        "type": "market",
+        "asset_class": "equity",
+        "gross_pnl_pct": 28.67615875428598,
+        "cost_pct": -0.7190640425720174,
+        "net_pct": 27.95709471171396
+      },
+      {
+        "item": "NG",
+        "type": "market",
+        "asset_class": "commodity",
+        "gross_pnl_pct": 11.281879333333327,
+        "cost_pct": -0.7527698244907393,
+        "net_pct": 10.529109508842588
+      },
+      {
+        "item": "commodity",
+        "type": "asset_class",
+        "asset_class": "commodity",
+        "gross_pnl_pct": 14.496226866666662,
+        "cost_pct": -1.583949924677586,
+        "net_pct": 12.912276941989075
+      },
+      {
+        "item": "equity",
+        "type": "asset_class",
+        "asset_class": "equity",
+        "gross_pnl_pct": 28.67615875428598,
+        "cost_pct": -0.7190640425720174,
+        "net_pct": 27.95709471171396
+      },
+      {
+        "item": "fx",
+        "type": "asset_class",
+        "asset_class": "fx",
+        "gross_pnl_pct": 32.35595530246356,
+        "cost_pct": -3.4011608977059677,
+        "net_pct": 28.954794404757596
+      },
+      {
+        "item": "fx_translation",
+        "type": "other",
+        "asset_class": NaN,
+        "gross_pnl_pct": NaN,
+        "cost_pct": NaN,
+        "net_pct": 0.21368553290031805
+      },
+      {
+        "item": "fx_conversion_cost",
+        "type": "other",
+        "asset_class": NaN,
+        "gross_pnl_pct": NaN,
+        "cost_pct": NaN,
+        "net_pct": -0.1068047336886089
+      },
+      {
+        "item": "cash_interest",
+        "type": "other",
+        "asset_class": NaN,
+        "gross_pnl_pct": NaN,
+        "cost_pct": NaN,
+        "net_pct": 0.0
+      },
+      {
+        "item": "TOTAL_NAV_CHANGE",
+        "type": "total",
+        "asset_class": NaN,
+        "gross_pnl_pct": NaN,
+        "cost_pct": NaN,
+        "net_pct": 69.93104685767233
+      }
+    ],
+    "markets_in_holdout": [
+      "6A",
+      "6B",
+      "6C",
+      "6E",
+      "6J",
+      "CL",
+      "NG"
+    ]
   }
 }

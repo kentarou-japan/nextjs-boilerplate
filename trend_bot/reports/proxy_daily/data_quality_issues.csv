@@ -1,0 +1,298 @@
+market,date,contract,check,severity,detail
+6A,1971-08-23,PERP,anomaly,WARN,|dP|=0.00725553 > 12.0×robustσ=0.000374599
+6A,1971-08-24,PERP,anomaly,WARN,|dP|=0.00450172 > 12.0×robustσ=0.000374599
+6A,1971-08-25,PERP,anomaly,WARN,|dP|=0.00649351 > 12.0×robustσ=0.000374599
+6A,1971-08-26,PERP,anomaly,WARN,|dP|=0.00630397 > 12.0×robustσ=0.000374641
+6A,1971-08-31,PERP,anomaly,WARN,|dP|=0.00641104 > 12.0×robustσ=0.000374683
+6A,1971-12-09,PERP,anomaly,WARN,|dP|=0.00450106 > 12.0×robustσ=0.000374936
+6A,1971-12-22,PERP,anomaly,WARN,|dP|=0.0114438 > 12.0×robustσ=0.000374936
+6A,1975-04-16,PERP,anomaly,WARN,|dP|=0.0115882 > 12.0×robustσ=0.000126752
+6A,1976-11-29,PERP,anomaly,WARN,|dP|=0.215444 > 12.0×robustσ=0.00162413
+6A,1976-12-07,PERP,anomaly,WARN,|dP|=0.0283761 > 12.0×robustσ=0.00164475
+6A,1983-03-08,PERP,anomaly,WARN,|dP|=0.094963 > 12.0×robustσ=0.00272219
+6A,1985-02-19,PERP,anomaly,WARN,|dP|=0.0610051 > 12.0×robustσ=0.0040631
+6A,1972-02-02,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1972-08-16,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1972-11-08,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1972-12-04,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-01-10,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-01-18,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-03-19,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-03-30,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-09-20,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1973-10-10,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-01-21,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-02-14,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-03-19,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-04-23,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-05-03,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-05-28,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-06-05,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-06-20,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-07-03,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-08-16,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-09-13,PERP,stale,WARN,settle unchanged for 5+ sessions
+6A,1974-10-31,PERP,stale,WARN,settle unchanged for 5+ sessions
+6B,1971-08-23,PERP,anomaly,WARN,|dP|=0.0153173 > 12.0×robustσ=0.000867317
+6B,1971-08-25,PERP,anomaly,WARN,|dP|=0.0138271 > 12.0×robustσ=0.000867317
+6B,1971-08-26,PERP,anomaly,WARN,|dP|=0.013373 > 12.0×robustσ=0.000867317
+6B,1971-08-31,PERP,anomaly,WARN,|dP|=0.0145314 > 12.0×robustσ=0.000867737
+6B,1971-12-21,PERP,anomaly,WARN,|dP|=0.0245417 > 12.0×robustσ=0.000867737
+6B,1972-01-14,PERP,anomaly,WARN,|dP|=0.017738 > 12.0×robustσ=0.000896346
+6B,1972-01-17,PERP,anomaly,WARN,|dP|=0.0132989 > 12.0×robustσ=0.000896787
+6B,1972-03-09,PERP,anomaly,WARN,|dP|=0.0187427 > 12.0×robustσ=0.00092132
+6B,1972-06-23,PERP,anomaly,WARN,|dP|=0.0720165 > 12.0×robustσ=0.00101097
+6B,1972-06-26,PERP,anomaly,WARN,|dP|=0.0195263 > 12.0×robustσ=0.00101097
+6B,1972-06-27,PERP,anomaly,WARN,|dP|=0.0270039 > 12.0×robustσ=0.00101097
+6B,1972-06-29,PERP,anomaly,WARN,|dP|=0.0214285 > 12.0×robustσ=0.00101124
+6B,1972-06-30,PERP,anomaly,WARN,|dP|=0.0228507 > 12.0×robustσ=0.0010115
+6B,1972-07-03,PERP,anomaly,WARN,|dP|=0.020089 > 12.0×robustσ=0.0010115
+6B,1972-07-05,PERP,anomaly,WARN,|dP|=0.0254626 > 12.0×robustσ=0.00101177
+6B,1973-02-02,PERP,anomaly,WARN,|dP|=0.0231384 > 12.0×robustσ=0.00189055
+6B,1973-02-13,PERP,anomaly,WARN,|dP|=0.0586953 > 12.0×robustσ=0.00189055
+6B,1973-02-14,PERP,anomaly,WARN,|dP|=0.0295309 > 12.0×robustσ=0.00189055
+6B,1973-03-05,PERP,anomaly,WARN,|dP|=0.0532175 > 12.0×robustσ=0.00202512
+6B,1976-10-25,PERP,anomaly,WARN,|dP|=0.0533648 > 12.0×robustσ=0.00441147
+6B,1977-10-31,PERP,anomaly,WARN,|dP|=0.0621261 > 12.0×robustσ=0.00131108
+6B,1977-11-03,PERP,anomaly,WARN,|dP|=0.0245442 > 12.0×robustσ=0.00131243
+6B,1977-12-19,PERP,anomaly,WARN,|dP|=0.0190982 > 12.0×robustσ=0.00131108
+6B,1977-12-22,PERP,anomaly,WARN,|dP|=0.0307471 > 12.0×robustσ=0.00131243
+6B,1977-12-28,PERP,anomaly,WARN,|dP|=0.0160051 > 12.0×robustσ=0.00131243
+6B,1977-12-29,PERP,anomaly,WARN,|dP|=0.0159155 > 12.0×robustσ=0.00131243
+6B,1978-01-03,PERP,anomaly,WARN,|dP|=0.0439909 > 12.0×robustσ=0.00131243
+6B,1978-01-05,PERP,anomaly,WARN,|dP|=0.0735792 > 12.0×robustσ=0.00131243
+6B,1978-01-06,PERP,anomaly,WARN,|dP|=0.0436928 > 12.0×robustσ=0.00131243
+6B,1978-01-11,PERP,anomaly,WARN,|dP|=0.0227038 > 12.0×robustσ=0.00131378
+6B,1978-02-24,PERP,anomaly,WARN,|dP|=0.0281972 > 12.0×robustσ=0.00130659
+6B,1978-03-10,PERP,anomaly,WARN,|dP|=0.0245379 > 12.0×robustσ=0.00131446
+6B,1978-03-23,PERP,anomaly,WARN,|dP|=0.0234791 > 12.0×robustσ=0.00134247
+6B,2016-06-24,PERP,anomaly,WARN,|dP|=0.116062 > 12.0×robustσ=0.00790668
+6B,1971-11-24,PERP,stale,WARN,settle unchanged for 5+ sessions
+6C,1971-08-09,PERP,anomaly,WARN,|dP|=0.0119998 > 12.0×robustσ=0.000866456
+6J,1971-08-31,,gap,WARN,gap of 18 days (no calendar available)
+6J,1971-08-31,PERP,anomaly,WARN,|dP|=0.000144098 > 12.0×robustσ=3.48235e-07
+6J,1971-09-01,PERP,anomaly,WARN,|dP|=1.00093e-05 > 12.0×robustσ=3.48235e-07
+6J,1971-09-02,PERP,anomaly,WARN,|dP|=1.75612e-05 > 12.0×robustσ=3.48235e-07
+6J,1971-09-03,PERP,anomaly,WARN,|dP|=1.00607e-05 > 12.0×robustσ=4.04935e-07
+6J,1971-09-14,PERP,anomaly,WARN,|dP|=6.45406e-06 > 12.0×robustσ=4.63781e-07
+6J,1971-09-20,PERP,anomaly,WARN,|dP|=5.96594e-06 > 12.0×robustσ=4.6382e-07
+6J,1971-09-27,PERP,anomaly,WARN,|dP|=6.44253e-06 > 12.0×robustσ=4.63963e-07
+6J,1971-09-29,PERP,anomaly,WARN,|dP|=6.99906e-06 > 12.0×robustσ=4.63989e-07
+6J,1971-10-01,PERP,anomaly,WARN,|dP|=1.75309e-05 > 12.0×robustσ=4.63989e-07
+6J,1971-10-12,PERP,anomaly,WARN,|dP|=1.68404e-05 > 12.0×robustσ=4.63989e-07
+6J,1971-10-13,PERP,anomaly,WARN,|dP|=8.03401e-06 > 12.0×robustσ=4.64028e-07
+6J,1971-10-18,PERP,anomaly,WARN,|dP|=8.99419e-06 > 12.0×robustσ=4.64093e-07
+6J,1971-10-19,PERP,anomaly,WARN,|dP|=1.14628e-05 > 12.0×robustσ=4.64158e-07
+6J,1971-10-26,PERP,anomaly,WARN,|dP|=1.25128e-05 > 12.0×robustσ=4.64223e-07
+6J,1971-11-04,PERP,anomaly,WARN,|dP|=1.25663e-05 > 12.0×robustσ=4.64262e-07
+6J,1971-11-05,PERP,anomaly,WARN,|dP|=1.57012e-05 > 12.0×robustσ=4.64301e-07
+6J,1971-11-15,PERP,anomaly,WARN,|dP|=7.01669e-06 > 12.0×robustσ=4.64353e-07
+6J,1971-12-02,PERP,anomaly,WARN,|dP|=1.49816e-05 > 12.0×robustσ=5.78933e-07
+6J,1971-12-03,PERP,anomaly,WARN,|dP|=8.49196e-06 > 12.0×robustσ=5.79063e-07
+6J,1971-12-06,PERP,anomaly,WARN,|dP|=1.34709e-05 > 12.0×robustσ=5.79192e-07
+6J,1971-12-07,PERP,anomaly,WARN,|dP|=2.75381e-05 > 12.0×robustσ=5.79289e-07
+6J,1971-12-15,PERP,anomaly,WARN,|dP|=1.00268e-05 > 12.0×robustσ=5.79775e-07
+6J,1971-12-16,PERP,anomaly,WARN,|dP|=1.4967e-05 > 12.0×robustσ=5.79775e-07
+6J,1971-12-21,PERP,anomaly,WARN,|dP|=5.33164e-05 > 12.0×robustσ=5.79937e-07
+6J,1972-01-06,PERP,anomaly,WARN,|dP|=2.90107e-05 > 12.0×robustσ=5.80262e-07
+6J,1972-01-11,PERP,anomaly,WARN,|dP|=1.50367e-05 > 12.0×robustσ=5.80424e-07
+6J,1972-01-12,PERP,anomaly,WARN,|dP|=1.00426e-05 > 12.0×robustσ=5.80424e-07
+6J,1972-01-14,PERP,anomaly,WARN,|dP|=9.97258e-06 > 12.0×robustσ=6.82887e-07
+6J,1972-01-27,PERP,anomaly,WARN,|dP|=1.50105e-05 > 12.0×robustσ=6.96159e-07
+6J,1972-02-02,PERP,anomaly,WARN,|dP|=1.90049e-05 > 12.0×robustσ=6.96295e-07
+6J,1972-02-09,PERP,anomaly,WARN,|dP|=3.09232e-05 > 12.0×robustσ=6.96295e-07
+6J,1972-02-28,PERP,anomaly,WARN,|dP|=1.59889e-05 > 12.0×robustσ=8.11595e-07
+6J,1972-04-07,PERP,anomaly,WARN,|dP|=1.80653e-05 > 12.0×robustσ=1.47872e-06
+6J,1972-06-23,PERP,anomaly,WARN,|dP|=8.94819e-05 > 12.0×robustσ=2.98627e-06
+6J,1972-06-26,PERP,anomaly,WARN,|dP|=5.00013e-05 > 12.0×robustσ=2.98627e-06
+6J,1972-06-29,PERP,anomaly,WARN,|dP|=4.49327e-05 > 12.0×robustσ=3.00818e-06
+6J,1973-02-09,PERP,anomaly,WARN,|dP|=6.993e-05 > 12.0×robustσ=1.59942e-06
+6J,1973-02-13,PERP,anomaly,WARN,|dP|=0.00034001 > 12.0×robustσ=1.61164e-06
+6J,1973-02-15,PERP,anomaly,WARN,|dP|=4.20283e-05 > 12.0×robustσ=1.62387e-06
+6J,1973-02-20,PERP,anomaly,WARN,|dP|=3.00683e-05 > 12.0×robustσ=1.62878e-06
+6J,1973-03-02,PERP,anomaly,WARN,|dP|=4.99863e-05 > 12.0×robustσ=1.62387e-06
+6J,1973-03-05,PERP,anomaly,WARN,|dP|=4.49141e-05 > 12.0×robustσ=1.62387e-06
+6J,1973-03-06,PERP,anomaly,WARN,|dP|=3.99591e-05 > 12.0×robustσ=1.62387e-06
+6J,1973-03-12,PERP,anomaly,WARN,|dP|=5.00402e-05 > 12.0×robustσ=1.62878e-06
+6J,1973-03-13,PERP,anomaly,WARN,|dP|=3.2039e-05 > 12.0×robustσ=1.62878e-06
+6J,1973-03-16,PERP,anomaly,WARN,|dP|=6.50976e-05 > 12.0×robustσ=2.18823e-06
+6J,1973-03-19,PERP,anomaly,WARN,|dP|=4.50012e-05 > 12.0×robustσ=2.27101e-06
+6J,1973-03-23,PERP,anomaly,WARN,|dP|=3.60919e-05 > 12.0×robustσ=2.27101e-06
+6J,1973-05-15,PERP,anomaly,WARN,|dP|=3.29536e-05 > 12.0×robustσ=1.47268e-06
+6J,1973-05-17,PERP,anomaly,WARN,|dP|=2.20001e-05 > 12.0×robustσ=1.47301e-06
+6J,1973-05-21,PERP,anomaly,WARN,|dP|=1.89956e-05 > 12.0×robustσ=1.47301e-06
+6J,1973-06-06,PERP,anomaly,WARN,|dP|=1.80026e-05 > 12.0×robustσ=1.47662e-06
+6J,1973-06-29,PERP,anomaly,WARN,|dP|=2.89461e-05 > 12.0×robustσ=1.47584e-06
+6J,1973-07-02,PERP,anomaly,WARN,|dP|=2.99413e-05 > 12.0×robustσ=1.47584e-06
+6J,1973-07-06,PERP,anomaly,WARN,|dP|=4.30274e-05 > 12.0×robustσ=1.4774e-06
+6J,1973-07-09,PERP,anomaly,WARN,|dP|=4.00036e-05 > 12.0×robustσ=1.4774e-06
+6J,1973-07-10,PERP,anomaly,WARN,|dP|=5.50805e-05 > 12.0×robustσ=1.4774e-06
+6J,1973-07-11,PERP,anomaly,WARN,|dP|=2.39624e-05 > 12.0×robustσ=1.4774e-06
+6J,1973-08-02,PERP,anomaly,WARN,|dP|=1.89252e-05 > 12.0×robustσ=1.47662e-06
+6J,1973-11-01,PERP,anomaly,WARN,|dP|=4.60162e-05 > 12.0×robustσ=1.62878e-06
+6J,1973-11-02,PERP,anomaly,WARN,|dP|=7.69466e-05 > 12.0×robustσ=1.9537e-06
+6J,1973-11-13,PERP,anomaly,WARN,|dP|=6.40541e-05 > 12.0×robustσ=1.62878e-06
+6J,1974-01-03,PERP,anomaly,WARN,|dP|=3.60255e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-01-07,PERP,anomaly,WARN,|dP|=0.000214965 > 12.0×robustσ=2.94391e-06
+6J,1974-01-21,PERP,anomaly,WARN,|dP|=5.69629e-05 > 12.0×robustσ=2.94314e-06
+6J,1974-01-24,PERP,anomaly,WARN,|dP|=3.79759e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-05,PERP,anomaly,WARN,|dP|=3.79474e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-06,PERP,anomaly,WARN,|dP|=4.49616e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-13,PERP,anomaly,WARN,|dP|=4.19679e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-19,PERP,anomaly,WARN,|dP|=3.59782e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-21,PERP,anomaly,WARN,|dP|=8.49997e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-02-26,PERP,anomaly,WARN,|dP|=3.89191e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-03-01,PERP,anomaly,WARN,|dP|=4.30917e-05 > 12.0×robustσ=2.94391e-06
+6J,1974-03-05,PERP,anomaly,WARN,|dP|=3.89469e-05 > 12.0×robustσ=2.94469e-06
+6J,1974-03-12,PERP,anomaly,WARN,|dP|=4.99493e-05 > 12.0×robustσ=2.94469e-06
+6J,1974-04-01,PERP,anomaly,WARN,|dP|=5.19813e-05 > 12.0×robustσ=2.95013e-06
+6J,1974-04-02,PERP,anomaly,WARN,|dP|=6.00015e-05 > 12.0×robustσ=2.95013e-06
+6J,1978-03-31,PERP,anomaly,WARN,|dP|=0.000147103 > 12.0×robustσ=1.03045e-05
+6J,1978-04-03,PERP,anomaly,WARN,|dP|=0.000230106 > 12.0×robustσ=1.03045e-05
+6J,1971-06-11,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1971-06-25,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1972-08-29,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1972-09-19,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1972-10-05,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1972-12-06,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1972-12-19,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1973-05-07,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1973-12-06,PERP,stale,WARN,settle unchanged for 5+ sessions
+6J,1973-12-20,PERP,stale,WARN,settle unchanged for 5+ sessions
+CL,2020-04-20,PERP,non_positive_price,WARN,settle=-36.98
+CL,1999-04-05,,gap,WARN,gap of 12 days (no calendar available)
+CL,1999-07-13,,gap,WARN,gap of 11 days (no calendar available)
+CL,1999-09-15,,gap,WARN,gap of 14 days (no calendar available)
+CL,1990-08-06,PERP,anomaly,WARN,|dP|=4.94 > 12.0×robustσ=0.385476
+CL,1991-01-17,PERP,anomaly,WARN,|dP|=10.77 > 12.0×robustσ=0.659757
+CL,2003-03-19,PERP,anomaly,WARN,|dP|=7.86 > 12.0×robustσ=0.578214
+CL,2020-04-20,PERP,anomaly,WARN,|dP|=55.29 > 12.0×robustσ=1.03782
+CL,2020-04-21,PERP,anomaly,WARN,|dP|=45.89 > 12.0×robustσ=1.05265
+CL,2026-04-08,PERP,anomaly,WARN,|dP|=18.41 > 12.0×robustσ=1.29728
+ES,2018-02-05,PERP,anomaly,WARN,|dP|=113.19 > 12.0×robustσ=6.80526
+ES,2018-02-08,PERP,anomaly,WARN,|dP|=100.66 > 12.0×robustσ=6.82734
+NG,1997-11-21,,gap,WARN,gap of 18 days (no calendar available)
+NG,1998-01-27,,gap,WARN,gap of 11 days (no calendar available)
+NG,1998-03-30,,gap,WARN,gap of 20 days (no calendar available)
+NG,1998-04-28,,gap,WARN,gap of 15 days (no calendar available)
+NG,1998-05-29,,gap,WARN,gap of 24 days (no calendar available)
+NG,1998-07-23,,gap,WARN,gap of 15 days (no calendar available)
+NG,1998-12-31,,gap,WARN,gap of 17 days (no calendar available)
+NG,1999-01-25,,gap,WARN,gap of 17 days (no calendar available)
+NG,1999-03-11,,gap,WARN,gap of 14 days (no calendar available)
+NG,1999-05-12,,gap,WARN,gap of 20 days (no calendar available)
+NG,1999-06-10,,gap,WARN,gap of 14 days (no calendar available)
+NG,1999-12-09,,gap,WARN,gap of 20 days (no calendar available)
+NG,1999-12-30,,gap,WARN,gap of 16 days (no calendar available)
+NG,2000-01-10,,gap,WARN,gap of 11 days (no calendar available)
+NG,2000-02-08,,gap,WARN,gap of 12 days (no calendar available)
+NG,2000-03-28,,gap,WARN,gap of 14 days (no calendar available)
+NG,2000-08-22,,gap,WARN,gap of 13 days (no calendar available)
+NG,2000-09-08,,gap,WARN,gap of 11 days (no calendar available)
+NG,2000-10-02,,gap,WARN,gap of 14 days (no calendar available)
+NG,2000-11-27,,gap,WARN,gap of 21 days (no calendar available)
+NG,2001-03-13,,gap,WARN,gap of 11 days (no calendar available)
+NG,2001-04-20,,gap,WARN,gap of 15 days (no calendar available)
+NG,2001-05-23,,gap,WARN,gap of 19 days (no calendar available)
+NG,2001-06-22,,gap,WARN,gap of 11 days (no calendar available)
+NG,2001-07-18,,gap,WARN,gap of 15 days (no calendar available)
+NG,2001-10-26,,gap,WARN,gap of 11 days (no calendar available)
+NG,2002-02-15,,gap,WARN,gap of 14 days (no calendar available)
+NG,2002-04-12,,gap,WARN,gap of 15 days (no calendar available)
+NG,2002-05-15,,gap,WARN,gap of 19 days (no calendar available)
+NG,2002-06-11,,gap,WARN,gap of 12 days (no calendar available)
+NG,2002-07-22,,gap,WARN,gap of 21 days (no calendar available)
+NG,2002-08-27,,gap,WARN,gap of 11 days (no calendar available)
+NG,2002-09-12,,gap,WARN,gap of 15 days (no calendar available)
+NG,2002-09-24,,gap,WARN,gap of 11 days (no calendar available)
+NG,2002-10-22,,gap,WARN,gap of 20 days (no calendar available)
+NG,2002-11-13,,gap,WARN,gap of 22 days (no calendar available)
+NG,2002-12-02,,gap,WARN,gap of 11 days (no calendar available)
+NG,2003-01-09,,gap,WARN,gap of 13 days (no calendar available)
+NG,2003-02-06,,gap,WARN,gap of 14 days (no calendar available)
+NG,2003-03-19,,gap,WARN,gap of 12 days (no calendar available)
+NG,2003-04-09,,gap,WARN,gap of 15 days (no calendar available)
+NG,2003-04-28,,gap,WARN,gap of 19 days (no calendar available)
+NG,2003-06-04,,gap,WARN,gap of 34 days (no calendar available)
+NG,2003-07-07,,gap,WARN,gap of 24 days (no calendar available)
+NG,2003-08-26,,gap,WARN,gap of 12 days (no calendar available)
+NG,2003-09-22,,gap,WARN,gap of 11 days (no calendar available)
+NG,2004-01-07,,gap,WARN,gap of 29 days (no calendar available)
+NG,2004-04-06,,gap,WARN,gap of 41 days (no calendar available)
+NG,2004-05-03,,gap,WARN,gap of 27 days (no calendar available)
+NG,2004-05-21,,gap,WARN,gap of 11 days (no calendar available)
+NG,2004-06-28,,gap,WARN,gap of 25 days (no calendar available)
+NG,2004-07-21,,gap,WARN,gap of 13 days (no calendar available)
+NG,2004-08-24,,gap,WARN,gap of 27 days (no calendar available)
+NG,2004-12-13,,gap,WARN,gap of 11 days (no calendar available)
+NG,2005-01-25,,gap,WARN,gap of 14 days (no calendar available)
+NG,2005-02-09,,gap,WARN,gap of 12 days (no calendar available)
+NG,2005-04-19,,gap,WARN,gap of 11 days (no calendar available)
+NG,2005-05-31,,gap,WARN,gap of 19 days (no calendar available)
+NG,2005-07-01,,gap,WARN,gap of 11 days (no calendar available)
+NG,2005-07-19,,gap,WARN,gap of 11 days (no calendar available)
+NG,2005-08-23,,gap,WARN,gap of 22 days (no calendar available)
+NG,2005-10-07,,gap,WARN,gap of 15 days (no calendar available)
+NG,2005-10-21,,gap,WARN,gap of 14 days (no calendar available)
+NG,2005-12-23,,gap,WARN,gap of 11 days (no calendar available)
+NG,2006-01-24,,gap,WARN,gap of 12 days (no calendar available)
+NG,2006-02-10,,gap,WARN,gap of 17 days (no calendar available)
+NG,2006-03-03,,gap,WARN,gap of 17 days (no calendar available)
+NG,2006-04-26,,gap,WARN,gap of 28 days (no calendar available)
+NG,2006-07-28,,gap,WARN,gap of 14 days (no calendar available)
+NG,2006-08-22,,gap,WARN,gap of 18 days (no calendar available)
+NG,2006-10-13,,gap,WARN,gap of 24 days (no calendar available)
+NG,2006-11-03,,gap,WARN,gap of 14 days (no calendar available)
+NG,2006-11-22,,gap,WARN,gap of 19 days (no calendar available)
+NG,2006-12-29,,gap,WARN,gap of 14 days (no calendar available)
+NG,2007-01-23,,gap,WARN,gap of 25 days (no calendar available)
+NG,2007-02-09,,gap,WARN,gap of 16 days (no calendar available)
+NG,2007-02-21,,gap,WARN,gap of 12 days (no calendar available)
+NG,2007-03-27,,gap,WARN,gap of 19 days (no calendar available)
+NG,2000-11-27,PERP,anomaly,WARN,|dP|=1.64 > 12.0×robustσ=0.133434
+NG,2000-12-11,PERP,anomaly,WARN,|dP|=1.83 > 12.0×robustσ=0.133434
+NG,2001-01-18,PERP,anomaly,WARN,|dP|=2.82 > 12.0×robustσ=0.14826
+NG,2003-02-24,PERP,anomaly,WARN,|dP|=5.88 > 12.0×robustσ=0.252042
+NG,2003-02-25,PERP,anomaly,WARN,|dP|=6.5 > 12.0×robustσ=0.252042
+NG,2003-02-28,PERP,anomaly,WARN,|dP|=7.67 > 12.0×robustσ=0.252042
+NG,2005-11-04,PERP,anomaly,WARN,|dP|=4.23 > 12.0×robustσ=0.303933
+NG,2014-02-05,PERP,anomaly,WARN,|dP|=2.34 > 12.0×robustσ=0.07413
+NG,2014-02-06,PERP,anomaly,WARN,|dP|=1.22 > 12.0×robustσ=0.07413
+NG,2014-02-07,PERP,anomaly,WARN,|dP|=0.98 > 12.0×robustσ=0.07413
+NG,2014-02-10,PERP,anomaly,WARN,|dP|=2.23 > 12.0×robustσ=0.07413
+NG,2014-02-12,PERP,anomaly,WARN,|dP|=1.79 > 12.0×robustσ=0.07413
+NG,2014-03-03,PERP,anomaly,WARN,|dP|=2.29 > 12.0×robustσ=0.07413
+NG,2014-03-04,PERP,anomaly,WARN,|dP|=0.89 > 12.0×robustσ=0.07413
+NG,2014-03-05,PERP,anomaly,WARN,|dP|=1.52 > 12.0×robustσ=0.07413
+NG,2014-03-06,PERP,anomaly,WARN,|dP|=1.57 > 12.0×robustσ=0.07413
+NG,2017-12-29,PERP,anomaly,WARN,|dP|=0.72 > 12.0×robustσ=0.059304
+NG,2018-01-02,PERP,anomaly,WARN,|dP|=2.55 > 12.0×robustσ=0.059304
+NG,2018-01-04,PERP,anomaly,WARN,|dP|=1.59 > 12.0×robustσ=0.059304
+NG,2018-01-08,PERP,anomaly,WARN,|dP|=1.76 > 12.0×robustσ=0.059304
+NG,2018-01-12,PERP,anomaly,WARN,|dP|=0.9 > 12.0×robustσ=0.059304
+NG,2018-01-16,PERP,anomaly,WARN,|dP|=1.4 > 12.0×robustσ=0.059304
+NG,2018-01-17,PERP,anomaly,WARN,|dP|=1.54 > 12.0×robustσ=0.059304
+NG,2018-01-19,PERP,anomaly,WARN,|dP|=0.72 > 12.0×robustσ=0.059304
+NG,2018-11-15,PERP,anomaly,WARN,|dP|=0.59 > 12.0×robustσ=0.044478
+NG,2019-03-04,PERP,anomaly,WARN,|dP|=1.06 > 12.0×robustσ=0.059304
+NG,2019-03-05,PERP,anomaly,WARN,|dP|=1.07 > 12.0×robustσ=0.059304
+NG,2021-02-11,PERP,anomaly,WARN,|dP|=2.74 > 12.0×robustσ=0.103782
+NG,2021-02-16,PERP,anomaly,WARN,|dP|=5.2 > 12.0×robustσ=0.118608
+NG,2021-02-17,PERP,anomaly,WARN,|dP|=12.54 > 12.0×robustσ=0.118608
+NG,2021-02-18,PERP,anomaly,WARN,|dP|=15.3 > 12.0×robustσ=0.118608
+NG,2021-02-19,PERP,anomaly,WARN,|dP|=3.6 > 12.0×robustσ=0.118608
+NG,2021-02-22,PERP,anomaly,WARN,|dP|=1.8 > 12.0×robustσ=0.118608
+NG,2024-01-12,PERP,anomaly,WARN,|dP|=10.05 > 12.0×robustσ=0.103782
+NG,2024-01-16,PERP,anomaly,WARN,|dP|=9.95 > 12.0×robustσ=0.103782
+NG,2025-01-17,PERP,anomaly,WARN,|dP|=5.56 > 12.0×robustσ=0.14826
+NG,2025-01-21,PERP,anomaly,WARN,|dP|=5.46 > 12.0×robustσ=0.14826
+NG,2025-02-18,PERP,anomaly,WARN,|dP|=1.8 > 12.0×robustσ=0.14826
+NG,2026-01-22,PERP,anomaly,WARN,|dP|=3.46 > 12.0×robustσ=0.163086
+NG,2026-01-23,PERP,anomaly,WARN,|dP|=22.3 > 12.0×robustσ=0.163086
+NG,2026-01-26,PERP,anomaly,WARN,|dP|=5.71 > 12.0×robustσ=0.163086
+NG,2026-01-27,PERP,anomaly,WARN,|dP|=7.82 > 12.0×robustσ=0.163086
+NG,2026-01-28,PERP,anomaly,WARN,|dP|=7.85 > 12.0×robustσ=0.163086
+NG,2026-01-30,PERP,anomaly,WARN,|dP|=3.07 > 12.0×robustσ=0.163086
+NG,2026-02-02,PERP,anomaly,WARN,|dP|=2.78 > 12.0×robustσ=0.163086
+NG,2026-02-04,PERP,anomaly,WARN,|dP|=2.77 > 12.0×robustσ=0.163086
+NG,2001-12-31,PERP,stale,WARN,settle unchanged for 5+ sessions

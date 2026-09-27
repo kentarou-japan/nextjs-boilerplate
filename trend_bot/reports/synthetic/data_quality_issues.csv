@@ -1,0 +1,33 @@
+market,date,contract,check,severity,detail
+6J,2017-12-29,6JM2018,anomaly,WARN,|dP|=0.0008035 > 12.0×robustσ=6.22692e-05
+CL,2020-04-20,CLK2020,non_positive_price,WARN,settle=-37.63
+CL,2001-12-04,CLF2002,anomaly,WARN,|dP|=8.49 > 12.0×robustσ=0.652344
+CL,2020-04-20,CLK2020,anomaly,WARN,|dP|=46.2 > 12.0×robustσ=0.14826
+CL,2020-04-21,CLK2020,anomaly,WARN,|dP|=45.89 > 12.0×robustσ=0.14826
+FESX,2024-08-20,FESXH2025,anomaly,WARN,|dP|=500 > 12.0×robustσ=32.6172
+FESX,2005-01-13,FESXM2005,anomaly,WARN,|dP|=333 > 12.0×robustσ=25.2042
+GILT,2012-11-30,GILTH2013,anomaly,WARN,|dP|=4.12 > 12.0×robustσ=0.281694
+GILT,2012-11-30,GILTM2013,anomaly,WARN,|dP|=4.12 > 12.0×robustσ=0.266868
+GILT,2006-07-25,GILTU2006,anomaly,WARN,|dP|=5.61 > 12.0×robustσ=0.422541
+GILT,2006-07-25,GILTZ2006,anomaly,WARN,|dP|=5.6 > 12.0×robustσ=0.407715
+GILT,2012-11-30,GILTZ2012,anomaly,WARN,|dP|=4.14 > 12.0×robustσ=0.266868
+HG,2009-11-02,HGH2010,anomaly,WARN,|dP|=0.105 > 12.0×robustσ=0.0059304
+HG,2009-11-02,HGK2010,anomaly,WARN,|dP|=0.105 > 12.0×robustσ=0.0059304
+HG,2009-08-11,HGU2009,anomaly,WARN,|dP|=0.0965 > 12.0×robustσ=0.00778365
+HG,2009-11-02,HGZ2009,anomaly,WARN,|dP|=0.1045 > 12.0×robustσ=0.0066717
+NG,2021-08-10,NGU2021,anomaly,WARN,|dP|=0.113 > 12.0×robustσ=0.0059304
+NG,2021-08-10,NGV2021,anomaly,WARN,|dP|=0.114 > 12.0×robustσ=0.0044478
+NK225M,2011-03-15,NK225MM2011,status_halt,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+NK225M,2011-03-15,NK225MU2011,status_halt,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+NK225M,2011-03-15,NK225MZ2011,status_halt,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-18,ZCH2013,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-18,ZCU2012,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-18,ZCZ2012,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-19,ZCH2013,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-19,ZCU2012,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2012-07-19,ZCZ2012,status_limit,INFO,"trading halted / limit — not tradable at settle, not a holiday"
+ZC,2000-11-14,ZCZ2000,anomaly,WARN,|dP|=36 > 12.0×robustσ=2.9652
+ZS,2020-09-21,ZSF2021,anomaly,WARN,|dP|=29.25 > 12.0×robustσ=2.2239
+ZS,2024-04-04,ZSK2024,anomaly,WARN,|dP|=46.25 > 12.0×robustσ=3.7065
+ZS,2024-04-04,ZSN2024,anomaly,WARN,|dP|=46.25 > 12.0×robustσ=3.52117
+ZS,2020-09-21,ZSX2020,anomaly,WARN,|dP|=28.75 > 12.0×robustσ=2.2239

@@ -81,7 +81,13 @@ def line_chart(series: dict[str, pd.Series], title: str, pct: bool = False, zero
     if zero:
         ax.axhline(0, color=MUTED, linewidth=0.8)
     if pct:
-        ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:.0f}%"))
+        lo, hi = ax.get_ylim()
+        dec = 0 if hi - lo >= 8 else (1 if hi - lo >= 0.8 else 2)
+        ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:.{dec}f}%"))
+    else:
+        lo, hi = ax.get_ylim()
+        if max(abs(lo), abs(hi)) >= 1e5:
+            ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
     if len(series) > 1:
         ax.legend(frameon=False, fontsize=8, labelcolor=INK2, ncol=min(4, len(series)))
     return _png(fig)
