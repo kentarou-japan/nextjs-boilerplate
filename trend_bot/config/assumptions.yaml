@@ -1,0 +1,54 @@
+# 研究用仮定（RESEARCH ASSUMPTIONS）
+#
+# ここにある値は「確認済みの事実」ではなく、バックテストを走らせるための仮定である。
+# - 手数料・スプレッド・出来高・証拠金は取引所/ブローカーの一次資料で未確認（2026-09-27、通信遮断）。
+# - 桁感を示すための保守寄りの概数であり、本番値として使ってはならない。
+# - ストレステストでは本ファイルの値を悪化方向に変えた結果も必ず併記する。
+# - 本番接続前に、ブローカー見積り・取引所の証拠金表・出来高統計（期間と出所を記録）で置き換えること。
+
+label: RESEARCH_ASSUMPTION_UNVERIFIED
+
+cost_model:
+  # 片側コスト = 手数料 + (spread_ticks/2)*tick*multiplier + インパクト
+  # インパクト(価格単位) = impact_coef * 日次価格ボラ * sqrt(注文枚数 / ADV)
+  impact_coef: 0.1
+  fx_conversion_cost_bps: 2.0          # 外貨残高を円転する際の片道コスト
+
+# 資産分類ごとの既定（市場別の値があればそちらを優先）
+class_defaults:
+  equity:    {initial_margin_frac: 0.07, spread_ticks: 1.0}
+  rates:     {initial_margin_frac: 0.025, spread_ticks: 1.0}
+  fx:        {initial_margin_frac: 0.04, spread_ticks: 1.0}
+  commodity: {initial_margin_frac: 0.09, spread_ticks: 1.0}
+
+markets:
+  # commission: 片側・1枚あたり（建値通貨）。ブローカー手数料＋取引所・清算手数料の概算（未確認）
+  # adv_contracts: 期近（または主要限月）の1日平均出来高の概数（未確認・桁感）
+  ES:     {commission: 2.5,  adv_contracts: 1000000}
+  NK225M: {commission: 100,  adv_contracts: 500000}
+  FESX:   {commission: 1.0,  adv_contracts: 500000}
+  ZN:     {commission: 2.5,  adv_contracts: 1000000}
+  FGBL:   {commission: 1.0,  adv_contracts: 500000}
+  JGB10:  {commission: 1500, adv_contracts: 20000, spread_ticks: 1.0}
+  GILT:   {commission: 1.0,  adv_contracts: 100000}
+  6J:     {commission: 2.5,  adv_contracts: 100000}
+  6E:     {commission: 2.5,  adv_contracts: 150000}
+  6B:     {commission: 2.5,  adv_contracts: 60000}
+  6A:     {commission: 2.5,  adv_contracts: 60000}
+  6C:     {commission: 2.5,  adv_contracts: 50000}
+  GC:     {commission: 2.5,  adv_contracts: 150000}
+  HG:     {commission: 2.5,  adv_contracts: 60000}
+  CL:     {commission: 2.5,  adv_contracts: 250000}
+  NG:     {commission: 2.5,  adv_contracts: 150000, initial_margin_frac: 0.15}
+  ZC:     {commission: 2.5,  adv_contracts: 200000}
+  ZS:     {commission: 2.5,  adv_contracts: 120000}
+
+# 短期金利（評価通貨 JPY の短期安全資産）データは未入手。
+# 未入手の場合、現金利息は 0 として計算し、成果物に "cash_rate_missing" を表示する。
+# このとき NAV リターンは「短期安全資産に対する超過収益」の近似になる（外貨残高の金利差は無視）。
+cash_rates:
+  JPY: null
+  USD: null
+  EUR: null
+  GBP: null
+  negative_balance_spread_bps: 50      # 外貨マイナス残高の借入スプレッド（仮定）

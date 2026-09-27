@@ -1,0 +1,85 @@
+# データ出所（取得スクリプト scripts/fetch_public_data.py が使用）
+#
+# 再現性のため GitHub 上のファイルはコミット SHA で固定する（2026-09-27 に git ls-remote で取得）。
+# 取得時に sha256 を data/raw/manifest.json に記録し、以後の実行はハッシュ一致を検査する。
+# いずれも「先物」ではなく現物・指数・為替スポットであり、成果は PROXY_PRELIMINARY（予備検証）扱い。
+
+checked_on: "2026-09-27"
+
+sources:
+  fx_daily:
+    url: "https://raw.githubusercontent.com/datasets/exchange-rates/bb1c4ff5cd249ae48d0cb1b8c437b3085936b92f/data/daily.csv"
+    primary_origin: "Federal Reserve H.10 (FRED 経由、datopian 再配布)"
+    license: "ODC-PDDL-1.0（再配布者表示）。一次出所は米連邦準備制度の公表データ"
+    frequency: daily
+    note: >-
+      README は AUD/EUR/GBP/NZD を USD/通貨 と記載しているが、実データを確認したところ
+      全通貨が「通貨/USD」表記（例: 2020-01-02 Euro=0.8956 は EUR per USD）。
+      loaders は値域検査でこの表記を検証してから使う。H.10 はニューヨーク正午の買相場。
+  wti_daily:
+    url: "https://raw.githubusercontent.com/datasets/oil-prices/c3c5d967148caf4d098314e1eb4a2c55ab54bc08/data/wti-daily.csv"
+    primary_origin: "U.S. EIA, Cushing OK WTI Spot Price FOB"
+    license: "ODC-PDDL-1.0（再配布者表示）。EIA データは米国政府著作物"
+    frequency: daily
+  natgas_daily:
+    url: "https://raw.githubusercontent.com/datasets/natural-gas/83b8b85fbad7d18bbecbd6570c068b91148711d2/data/daily.csv"
+    primary_origin: "U.S. EIA, Henry Hub Natural Gas Spot Price"
+    license: "ODC-PDDL-1.0（再配布者表示）"
+    frequency: daily
+  sp500_monthly:
+    url: "https://raw.githubusercontent.com/datasets/s-and-p-500/78cdcebfd6725c31a914947efd08ddadac08eb1e/data/data.csv"
+    primary_origin: "Robert Shiller online data（S&P 総合、月次は日次終値の月平均）"
+    license: "再配布者は ODC-PDDL と表示。Shiller データの利用条件は本番前に要確認"
+    frequency: monthly_average
+  gold_monthly:
+    url: "https://raw.githubusercontent.com/datasets/gold-prices/95bfea9197222dcda13d8c4d9928fb631fe745aa/data/monthly.csv"
+    primary_origin: "World Bank Commodity Markets (Pink Sheet) 1960-、月平均"
+    license: "ODC-PDDL-1.0（再配布者表示）"
+    frequency: monthly_average
+  ust10y_monthly:
+    url: "https://raw.githubusercontent.com/datasets/bond-yields-us-10y/ba336158ac627766ae23ab8bbc46e6e7eab1294a/data/monthly.csv"
+    primary_origin: "Federal Reserve H.15 10年国債利回り（月平均）"
+    license: "ODC-PDDL-1.0（再配布者表示）"
+    frequency: monthly_average
+  imf_commodities_monthly:
+    url: "https://raw.githubusercontent.com/datasets/commodity-prices/2d772f334a03b0a6a3ba3add3291f5eb036caa98/data/commodity-prices.csv"
+    primary_origin: "IMF Primary Commodity Prices（1980-2016、月平均）"
+    license: "ODC-PDDL-1.0（再配布者表示）。IMF の利用条件は要確認"
+    frequency: monthly_average
+  arch_sp500_daily:
+    package: "arch==8.0.0 (arch.data.sp500)"
+    primary_origin: "S&P 500 指数 日次終値 1999-01-04〜2018-12-31（arch 同梱、元は Yahoo Finance）"
+    license: "arch は NCSA ライセンス。同梱データの元データ利用条件は未確認のため再配布しない（実行時にパッケージから読む）"
+    frequency: daily
+  arch_ff_monthly:
+    package: "arch==8.0.0 (arch.data.frenchdata)"
+    primary_origin: "Kenneth R. French Data Library（Mkt-RF, RF 月次 1926-07〜2018-11）"
+    license: "学術データ。利用条件は一次出所で要確認"
+    frequency: monthly
+
+# 代替データと先物市場の対応（価格の単位は先物の建値単位に換算）
+proxy_map_daily:
+  ES:  {source: arch_sp500_daily, transform: identity, note: "指数価格。配当−金利（ベーシス）を含まない"}
+  CL:  {source: wti_daily, transform: identity, note: "現物。ロールイールド（期間構造）を含まない。2020-04-20 にマイナス価格"}
+  NG:  {source: natgas_daily, transform: identity, note: "現物。先物のコンタンゴによるロール損益を含まない"}
+  6J:  {source: fx_daily, series: Japan, transform: reciprocal, note: "USD per JPY。金利差（キャリー）を含まない"}
+  6E:  {source: fx_daily, series: Euro, transform: reciprocal}
+  6B:  {source: fx_daily, series: United Kingdom, transform: reciprocal}
+  6A:  {source: fx_daily, series: Australia, transform: reciprocal}
+  6C:  {source: fx_daily, series: Canada, transform: reciprocal}
+
+proxy_map_monthly:
+  ES:  {source: sp500_monthly, column: SP500, averaged: true}
+  ZN:  {source: ust10y_monthly, transform: duration_price, modified_duration: 6.5, averaged: true,
+        note: "利回り変化×想定デュレーションで作った価格代理。クーポン・キャリー・CTD 変化を含まない"}
+  GC:  {source: gold_monthly, start: "1975-01-01", averaged: true}
+  HG:  {source: imf_commodities_monthly, column: Copper, unit_factor: 0.000453592, averaged: true, note: "USD/mt → USD/lb"}
+  ZC:  {source: imf_commodities_monthly, column: "Maize corn", unit_factor: 2.54012, averaged: true, note: "USD/mt → cents/bu"}
+  ZS:  {source: imf_commodities_monthly, column: Soybeans, unit_factor: 2.72155, averaged: true, note: "USD/mt → cents/bu"}
+  CL:  {source: wti_daily, month_end: true}
+  NG:  {source: natgas_daily, month_end: true}
+  6J:  {source: fx_daily, series: Japan, transform: reciprocal, month_end: true}
+  6E:  {source: fx_daily, series: Euro, transform: reciprocal, month_end: true}
+  6B:  {source: fx_daily, series: United Kingdom, transform: reciprocal, month_end: true}
+  6A:  {source: fx_daily, series: Australia, transform: reciprocal, month_end: true}
+  6C:  {source: fx_daily, series: Canada, transform: reciprocal, month_end: true}

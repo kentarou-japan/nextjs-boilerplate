@@ -1,0 +1,26 @@
+# 月次代替データによる予備検証用の上書き設定（strategy.yaml に重ねる）
+# 月次平均値系列（Shiller S&P、金、米10年利回り、IMF商品）は平均化で1次の自己相関が人工的に生じるため、
+# シグナルに1カ月の追加ラグを入れる（Working 1960 の平均化効果への対処）。
+run:
+  name: baseline_monthly_proxy
+  bars_per_year: 12
+signal:
+  lookbacks_bars: [3, 6, 12]
+  vol_span_bars: 24
+  vol_min_periods: 12
+  vol_floor_window_bars: 120
+  vol_floor_min_periods: 24
+  extra_lag_bars: 1
+  min_history_bars: 14
+portfolio:
+  corr_aggregation_bars: 1
+  corr_window_periods: 60
+  corr_min_periods: 24
+  corr_update_every_bars: 1
+execution:
+  lag_bars: 1
+  max_daily_change_frac: 1.0
+data_quality:
+  anomaly_window: 60
+  stale_run_days: 4
+  max_data_age_business_days: 31

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trendbot"
+version = "0.1.0"
+description = "Multi-asset trend-following research, backtest and paper-trading system (JPY base). Live trading disabled."
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.4.6",
+  "pandas==3.0.6",
+  "pyarrow==25.0.1",
+  "PyYAML==6.0.1",
+  "exchange_calendars==4.13.2",
+  "arch==8.0.0",
+  "matplotlib==3.11.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1"]
+
+[project.scripts]
+trendbot = "trendbot.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

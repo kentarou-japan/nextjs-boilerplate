@@ -1,0 +1,381 @@
+# 銘柄仕様（契約情報）
+#
+# 重要:
+# - 本ファイルの値は 2026-09-27 時点で一次資料（取引所の契約仕様ページ）と照合できていない。
+#   本環境から取引所サイトへの通信がネットワークポリシーで遮断されているため。
+# - 値は作業者の既存知識に基づく「未確認値」であり、verification.status=unverified の市場は
+#   本番接続の阻害条件（production blocker）になる（contracts.production_blockers() が列挙する）。
+# - 契約仕様は取引所により変更される（例: 呼値、取引時間、限月サイクル）。本番前に必ず一次資料で確認し、
+#   確認日と URL を verification に記録すること。
+# - 手数料・証拠金・流動性はここに書かない（変動するため）。研究用仮定は assumptions.yaml に分離。
+#
+# ルールコード（contracts.py で実装）:
+#   last_trade_rule / first_notice_rule の値は contracts.RULES のキー。null は該当なし。
+
+defaults:
+  min_trade_qty: 1
+  roll:
+    method: calendar            # calendar | volume（volume は前日までの出来高のみ使用）
+    business_days_before: 5     # 基準日（first_notice か last_trade の早い方）の何営業日前に乗り換えるか
+  verification:
+    status: unverified
+    source: "作業者の既存知識（一次資料未照合）"
+    checked_on: null
+    attempted_on: "2026-09-27"
+    note: "取引所サイトへの通信が遮断されていたため未照合"
+
+markets:
+  # ---------------- 株価指数 ----------------
+  ES:
+    name: "E-mini S&P 500"
+    asset_class: equity
+    sector: equity_us
+    exchange: CME
+    symbol_root: ES
+    currency: USD
+    multiplier: 50            # USD / index point
+    tick_size: 0.25
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT（16:00-17:00 は日次休止）"
+    settlement_time_local: "15:00"
+    last_trade_rule: third_friday
+    first_notice_rule: null
+    delivery: cash
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html"
+  NK225M:
+    name: "日経225mini"
+    asset_class: equity
+    sector: equity_jp
+    exchange: OSE
+    symbol_root: NK225M
+    currency: JPY
+    multiplier: 100           # JPY / index point
+    tick_size: 5
+    contract_months: [H, M, U, Z]   # 実際は四半期限月に加え直近の非四半期限月も上場（未確認）
+    timezone: Asia/Tokyo
+    calendar: XTKS             # OSE 専用暦が無いため東証暦で代用（未確認）
+    trading_hours: "日中 8:45-15:45、夜間 17:00-翌6:00 JST（2024年11月変更後と認識、未確認）"
+    settlement_time_local: "15:45"
+    last_trade_rule: business_day_before_second_friday
+    first_notice_rule: null
+    delivery: cash
+    allow_negative_prices: false
+    primary_source_url: "https://www.jpx.co.jp/derivatives/products/domestic/225mini/"
+  FESX:
+    name: "EURO STOXX 50 Index Futures"
+    asset_class: equity
+    sector: equity_eu
+    exchange: EUREX
+    symbol_root: FESX
+    currency: EUR
+    multiplier: 10
+    tick_size: 1.0
+    contract_months: [H, M, U, Z]
+    timezone: Europe/Berlin
+    calendar: XEUR
+    trading_hours: "01:10-22:00 CET（未確認）"
+    settlement_time_local: "17:30"
+    last_trade_rule: third_friday
+    first_notice_rule: null
+    delivery: cash
+    allow_negative_prices: false
+    primary_source_url: "https://www.eurex.com/ex-en/markets/idx/stx/euro-stoxx-50-derivatives"
+
+  # ---------------- 国債 ----------------
+  ZN:
+    name: "10-Year U.S. Treasury Note"
+    asset_class: rates
+    sector: rates_us
+    exchange: CBOT
+    symbol_root: ZN
+    currency: USD
+    multiplier: 1000          # USD per 1.0 price point (face 100,000)
+    tick_size: 0.015625       # 1/2 of 1/32（未確認）
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: seventh_bd_before_last_bd
+    first_notice_rule: last_bd_of_prior_month
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/interest-rates/us-treasury/10-year-us-treasury-note.contractSpecs.html"
+  FGBL:
+    name: "Euro-Bund Futures"
+    asset_class: rates
+    sector: rates_eu
+    exchange: EUREX
+    symbol_root: FGBL
+    currency: EUR
+    multiplier: 1000
+    tick_size: 0.01
+    contract_months: [H, M, U, Z]
+    timezone: Europe/Berlin
+    calendar: XEUR
+    trading_hours: "01:10-22:00 CET（未確認）"
+    settlement_time_local: "17:15"
+    last_trade_rule: eurex_bond_two_days_before_tenth
+    first_notice_rule: null     # Eurex は FND の概念ではなく受渡通知日。LTD 基準で乗り換え
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.eurex.com/ex-en/markets/int/fix/government-bonds/Euro-Bund-Futures-137298"
+  JGB10:
+    name: "長期国債先物（10年）"
+    asset_class: rates
+    sector: rates_jp
+    exchange: OSE
+    symbol_root: JB
+    currency: JPY
+    multiplier: 1000000       # 額面1億円、価格は額面100円あたり → 1.0 point = 100万円
+    tick_size: 0.01
+    contract_months: [H, M, U, Z]
+    timezone: Asia/Tokyo
+    calendar: XTKS
+    trading_hours: "日中・夜間（2024年の時間変更後の詳細は未確認）"
+    settlement_time_local: "15:00"
+    last_trade_rule: jgb_fifth_bd_before_twentieth
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.jpx.co.jp/derivatives/products/jgb/jgb-futures/"
+    note: "1枚の想定元本が約1.4億円と大きく、1億円運用では整数化で建てられない可能性が高い。ミニ長期国債先物（1/10）の採用可否は未確認"
+  GILT:
+    name: "Long Gilt Futures"
+    asset_class: rates
+    sector: rates_uk
+    exchange: ICE_EU
+    symbol_root: R
+    currency: GBP
+    multiplier: 1000
+    tick_size: 0.01
+    contract_months: [H, M, U, Z]
+    timezone: Europe/London
+    calendar: XLON
+    trading_hours: "08:00-18:00 London（未確認）"
+    settlement_time_local: "16:15"
+    last_trade_rule: second_bd_before_last_bd
+    first_notice_rule: two_bd_before_first_day
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.ice.com/products/37650330/Long-Gilt-Future"
+
+  # ---------------- 通貨（CME、米ドル建て） ----------------
+  6J:
+    name: "Japanese Yen Futures"
+    asset_class: fx
+    sector: fx_jpy
+    exchange: CME
+    symbol_root: 6J
+    currency: USD
+    multiplier: 12500000      # JPY 12.5m; 価格は USD per JPY
+    tick_size: 0.0000005
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: cme_fx_two_bd_before_third_wednesday
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/fx/g10/japanese-yen.contractSpecs.html"
+    note: "円建て投資家にとって 6J の買いは円買い（ドル売り）ポジション"
+  6E:
+    name: "Euro FX Futures"
+    asset_class: fx
+    sector: fx_eur
+    exchange: CME
+    symbol_root: 6E
+    currency: USD
+    multiplier: 125000
+    tick_size: 0.00005
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: cme_fx_two_bd_before_third_wednesday
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/fx/g10/euro-fx.contractSpecs.html"
+  6B:
+    name: "British Pound Futures"
+    asset_class: fx
+    sector: fx_gbp
+    exchange: CME
+    symbol_root: 6B
+    currency: USD
+    multiplier: 62500
+    tick_size: 0.0001
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: cme_fx_two_bd_before_third_wednesday
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/fx/g10/british-pound.contractSpecs.html"
+  6A:
+    name: "Australian Dollar Futures"
+    asset_class: fx
+    sector: fx_aud
+    exchange: CME
+    symbol_root: 6A
+    currency: USD
+    multiplier: 100000
+    tick_size: 0.00005
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: cme_fx_two_bd_before_third_wednesday
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/fx/g10/australian-dollar.contractSpecs.html"
+  6C:
+    name: "Canadian Dollar Futures"
+    asset_class: fx
+    sector: fx_cad
+    exchange: CME
+    symbol_root: 6C
+    currency: USD
+    multiplier: 100000
+    tick_size: 0.00005
+    contract_months: [H, M, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:00"
+    last_trade_rule: cme_fx_one_bd_before_third_wednesday
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/fx/g10/canadian-dollar.contractSpecs.html"
+
+  # ---------------- 商品 ----------------
+  GC:
+    name: "COMEX Gold"
+    asset_class: commodity
+    sector: metals_precious
+    exchange: COMEX
+    symbol_root: GC
+    currency: USD
+    multiplier: 100           # troy oz
+    tick_size: 0.10
+    contract_months: [G, J, M, Q, V, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "12:30"
+    last_trade_rule: third_last_bd
+    first_notice_rule: last_bd_of_prior_month
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/metals/precious/gold.contractSpecs.html"
+  HG:
+    name: "COMEX Copper"
+    asset_class: commodity
+    sector: metals_industrial
+    exchange: COMEX
+    symbol_root: HG
+    currency: USD
+    multiplier: 25000         # lb
+    tick_size: 0.0005
+    contract_months: [H, K, N, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "12:00"
+    last_trade_rule: third_last_bd
+    first_notice_rule: last_bd_of_prior_month
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/metals/base/copper.contractSpecs.html"
+  CL:
+    name: "NYMEX WTI Light Sweet Crude Oil"
+    asset_class: commodity
+    sector: energy
+    exchange: NYMEX
+    symbol_root: CL
+    currency: USD
+    multiplier: 1000          # barrels
+    tick_size: 0.01
+    contract_months: [F, G, H, J, K, M, N, Q, U, V, X, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "13:30"
+    last_trade_rule: cl_three_bd_before_25th_prior_month
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: true    # 2020-04-20 に期近がマイナス清算
+    primary_source_url: "https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.contractSpecs.html"
+  NG:
+    name: "NYMEX Henry Hub Natural Gas"
+    asset_class: commodity
+    sector: energy
+    exchange: NYMEX
+    symbol_root: NG
+    currency: USD
+    multiplier: 10000         # mmBtu
+    tick_size: 0.001
+    contract_months: [F, G, H, J, K, M, N, Q, U, V, X, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 17:00-16:00 CT"
+    settlement_time_local: "14:30"
+    last_trade_rule: ng_three_bd_before_first_day
+    first_notice_rule: null
+    delivery: physical
+    allow_negative_prices: false
+    primary_source_url: "https://www.cmegroup.com/markets/energy/natural-gas/natural-gas.contractSpecs.html"
+    note: "季節性の強い期間構造（コンタンゴ）により、現物と先物のトレンド成績は大きく乖離し得る"
+  ZC:
+    name: "CBOT Corn"
+    asset_class: commodity
+    sector: agri_grains
+    exchange: CBOT
+    symbol_root: ZC
+    currency: USD
+    multiplier: 50            # 5,000 bu、価格は cents/bu → 1 cent = 50 USD
+    tick_size: 0.25           # cents
+    contract_months: [H, K, N, U, Z]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 19:00-7:45, 8:30-13:20 CT（未確認）"
+    settlement_time_local: "13:15"
+    last_trade_rule: bd_before_fifteenth
+    first_notice_rule: last_bd_of_prior_month
+    delivery: physical
+    allow_negative_prices: false
+    price_limit_note: "日次値幅制限あり。制限到達日は取引停止相当として扱う（status=limit）"
+    primary_source_url: "https://www.cmegroup.com/markets/agriculture/grains/corn.contractSpecs.html"
+  ZS:
+    name: "CBOT Soybeans"
+    asset_class: commodity
+    sector: agri_oilseeds
+    exchange: CBOT
+    symbol_root: ZS
+    currency: USD
+    multiplier: 50
+    tick_size: 0.25
+    contract_months: [F, H, K, N, Q, U, X]
+    timezone: America/Chicago
+    calendar: CMES
+    trading_hours: "日〜金 19:00-7:45, 8:30-13:20 CT（未確認）"
+    settlement_time_local: "13:15"
+    last_trade_rule: bd_before_fifteenth
+    first_notice_rule: last_bd_of_prior_month
+    delivery: physical
+    allow_negative_prices: false
+    price_limit_note: "日次値幅制限あり"
+    primary_source_url: "https://www.cmegroup.com/markets/agriculture/oilseeds/soybean.contractSpecs.html"

@@ -1,0 +1,37 @@
+# 事前登録した探索範囲（2026-09-27、結果を見る前に固定）
+#
+# - 探索は下記グリッドのみ。これ以外の条件で良い成績が出ても採用しない。
+# - 最終評価期間（holdout）は開発期間の選択・調整に一切使わない。
+#   コード上も --unlock-holdout を付けない限り holdout 期間のデータを評価しない。
+# - 採用規則: 代替案は、ウォークフォワードの未使用期間(OOS)で基準案の Sharpe を 0.10 以上上回り、
+#   かつ CSCV による PBO < 0.5 の場合のみ採用。満たさなければ基準案を維持。
+
+holdout:
+  daily_proxy_start: "2021-01-01"
+  monthly_proxy_start: "2019-01-01"
+  synthetic_start: "2019-01-01"
+
+walk_forward:
+  scheme: expanding
+  first_train_years: 5
+  test_years: 1
+  selection_metric: sharpe
+
+grid:
+  signal.transform: [sign, clipped_z]
+  signal.vol_span_bars: [30, 60]
+  execution.buffer_frac: [0.05, 0.10]
+# 合計 2*2*2 = 8 通り（ベースライン = sign / 60 / 0.10）
+
+adoption_rule:
+  min_sharpe_improvement_oos: 0.10
+  max_pbo: 0.5
+
+# 感度分析（採用判断には使わない。頑健性の確認のみ）
+sensitivity:
+  signal.lookbacks_bars:
+    daily: [[42, 105, 210], [63, 126, 252], [84, 168, 336]]
+    monthly: [[2, 5, 10], [3, 6, 12], [4, 8, 14]]
+  signal.vol_floor_ratio: [0.3, 0.5, 0.7]
+  portfolio.idm_cap: [2.0, 2.5, 3.0]
+  risk.drawdown_control.enabled: [true, false]

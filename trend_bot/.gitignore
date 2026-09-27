@@ -1,0 +1,15 @@
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/user/*
+!data/user/.gitkeep
+!data/user/README.md
+state/
+runs/
+logs/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.env*
+secrets*

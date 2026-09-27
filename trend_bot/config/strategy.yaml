@@ -1,0 +1,70 @@
+# 基準戦略（ベースライン）設定 — 日次
+# 数式と時刻の定義は docs/01_strategy_spec.md。
+# ここで決めた既定値は結果を見る前に固定したもの（2026-09-27）。変更した場合は docs/05_trials_log.md に記録する。
+
+run:
+  name: baseline_daily
+  base_currency: JPY
+  initial_capital: 300000000       # 3億円（1億/10億は容量分析で別途）
+  seed: 20260927
+  bars_per_year: 252
+  integer_contracts: true
+
+universe: [ES, NK225M, FESX, ZN, FGBL, JGB10, GILT, 6J, 6E, 6B, 6A, 6C, GC, HG, CL, NG, ZC, ZS]
+
+signal:
+  lookbacks_bars: [63, 126, 252]   # 約3, 6, 12カ月
+  transform: sign                  # sign | clipped_z
+  z_scale: 1.0                     # clipped_z 用: clip(z/z_scale, -1, 1)
+  vol_span_bars: 60                # 日次価格差のEWMA分散スパン
+  vol_min_periods: 40
+  vol_floor_ratio: 0.5             # 下限 = ratio × 過去 vol_floor_window のボラ中央値
+  vol_floor_window_bars: 1260
+  vol_floor_min_periods: 252
+  extra_lag_bars: 0                # 月次平均系列など自己相関が人工的に生じる系列では 1
+  min_history_bars: 253
+
+portfolio:
+  target_vol_annual: 0.09          # 研究上の目標（上限でも保証でもない）
+  class_budget: {equity: 0.25, rates: 0.25, fx: 0.25, commodity: 0.25}
+  sector_equal_within_class: true
+  corr_aggregation_bars: 5         # 週次合計リターンで相関推定（取引時間差の緩和）
+  corr_window_periods: 104
+  corr_min_periods: 26
+  corr_update_every_bars: 5
+  idm_cap: 2.5
+  idm_floor_negative_corr: true    # 分散乗数計算では負相関を0に切上げ（保守的）
+
+risk:
+  market_vol_cap: 0.03             # 1市場の単独年率ボラ（NAV比）上限
+  sector_vol_cap: 0.05             # 経済的に似たリスク（sector）の年率ボラ上限
+  class_vol_cap: 0.06              # 資産分類の年率ボラ上限
+  portfolio_vol_cap_mult: 1.25     # 事前推定ボラ > 目標×1.25 なら全体縮小
+  market_notional_cap: 1.5         # 1市場の想定元本 / NAV
+  gross_notional_cap: 6.0          # 総建玉の想定元本 / NAV
+  margin_usage_cap: 0.30           # 当初証拠金合計 / NAV
+  min_liquidity_frac: 0.60         # (NAV - 当初証拠金 - 3σ日次ストレス損失) / NAV の下限
+  stress_sigma: 3.0
+  drawdown_control:
+    enabled: true
+    levels: [[0.10, 0.75], [0.15, 0.50], [0.20, 0.25]]   # [DD閾値, リスク倍率]
+    resume_hysteresis: 0.025       # 閾値 - 2.5%pt まで回復したら一段階戻す
+
+execution:
+  lag_bars: 1                      # 判断(t終値) → 約定(t+1清算値)
+  buffer_frac: 0.10                # 目標との差が 満額建玉×10% 以内なら取引しない
+  trade_to: edge                   # edge | target
+  max_daily_change_frac: 0.5       # リスク増加方向の1日変更量上限（満額建玉比）
+  max_adv_frac: 0.01               # 1日の注文枚数 / ADV 上限
+  max_position_adv_frac: 0.05      # 建玉 / ADV 上限
+
+accounting:
+  sweep_frequency: monthly         # 外貨残高の円転: monthly | daily | never
+  sweep_threshold_nav_frac: 0.0    # 残高がNAV比でこれ以上なら円転
+
+data_quality:
+  anomaly_mad_k: 12.0              # |ΔP| > k × MAD基準σ で異常値フラグ
+  anomaly_window: 250
+  stale_run_days: 5                # 同値が連続 n 営業日で古い価格フラグ
+  max_data_age_business_days: 1    # 判断時点で最新データが何営業日前までなら許容
+  global_halt_if_failed_markets_ge: 4
