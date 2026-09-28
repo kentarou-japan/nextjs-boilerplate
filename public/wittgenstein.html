@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>言語と生 — ウィトゲンシュタイン連続講座</title>
+<title>言語と生</title>
 <meta name="description" content="ウィトゲンシュタインの哲学を「言葉」と「生きること」からたどる連続講座。水彩の世界を歩きながら、梯子・蝿取り壺・言語ゲーム・アヒルウサギをめぐる。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@ body.ready .loader{opacity:0;visibility:hidden}
 @keyframes fadeIn{to{opacity:1}}
 
 /* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,40px);pointer-events:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top, 0px)) clamp(16px,4vw,40px) 14px;pointer-events:none}
 .nav>*{pointer-events:auto}
 .nav{transition:background .4s,box-shadow .4s}
 .nav.solid{background:rgba(244,236,220,.88);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(42,40,48,.12)}
@@ -69,7 +69,7 @@ section{position:relative}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
 @media (max-width:860px){.grid2{grid-template-columns:1fr}}
 
-.rv{opacity:0;transform:translate3d(0,40px,0) rotate(.6deg);filter:blur(6px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1),filter 1.2s ease}
+.rv{opacity:.25;transform:translate3d(0,40px,0) rotate(.6deg);filter:blur(6px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1),filter 1.2s ease}
 .rv.in{opacity:1;transform:none;filter:none}
 .rv.d1{transition-delay:.15s}.rv.d2{transition-delay:.3s}.rv.d3{transition-delay:.45s}.rv.d4{transition-delay:.6s}
 
